@@ -9,8 +9,24 @@ namespace CSharp_SpotifyAPI
 {
     class Authentication
     {
-        //Create a HTTP server to handle responses       
-        //HTTPServer myServer = new HTTPServer(@"C:\Test", 8888);
+        
+        private string _clientID;
+
+
+
+        public Authentication()
+        {
+
+        }
+
+        public void Authenticate()
+        {
+
+
+
+        }
+
+
 
         //https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow
 
