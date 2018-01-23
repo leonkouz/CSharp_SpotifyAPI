@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -66,6 +67,20 @@ namespace CSharp_SpotifyAPI
         [Description("user-read-recently-played")]
         UserReadRecentlyPlayed = 18
 
-            
     }
+
+    public static class ScopeExtensions
+    {
+
+        public static string GetDescription(this Scope scope)
+        {
+            FieldInfo fieldInfo = scope.GetType().GetField(scope.ToString());
+            if (fieldInfo == null) return null;
+            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
+            return attribute.Description;
+                        
+        }
+
+    }
+
 }

@@ -17,12 +17,12 @@ namespace CSharp_SpotifyAPI
         public Authentication()
         {
 
+
         }
 
         public void Authenticate()
         {
-
-
+            
 
         }
 
