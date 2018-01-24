@@ -30,7 +30,7 @@ namespace CSharp_SpotifyAPI
             BuildUrl();
         }
 
-        private string BuildUrl()
+        private void BuildUrl()
         {
             StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize?");
             builder.Append("client_id=" + _clientID);
@@ -40,7 +40,7 @@ namespace CSharp_SpotifyAPI
             builder.Append("&state=" + _state);
             builder.Append("&show_dialog=" + _showDialgog);
 
-            return builder.ToString();
+            _url = builder.ToString();
         }
 
         public string Authenticate()
@@ -50,12 +50,14 @@ namespace CSharp_SpotifyAPI
             //create server with specific port
             SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
             myServer.Listen();
+            Console.WriteLine("Listening on 62177");
 
             Process.Start(_url);
 
             myServer.OnAuth += e =>
             {
                 authCode = e.Code;
+                Console.WriteLine(e.Code);
             };
 
             return authCode;

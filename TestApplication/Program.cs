@@ -11,13 +11,15 @@ namespace TestApplication
     {
         static void Main(string[] args)
         {
-            //create server with auto assigned port
-            SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
-            myServer.Listen();
+            string clientID = "";
+            string redirectID = "http%3A%2F%2Flocalhost%3A62177";
+            string state = "123";
+            Scope scope = Scope.UserLibraryRead;
 
-            Console.WriteLine("Listening on 62177");
+            SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, false);
 
             Console.ReadLine();
+
 
 
         }

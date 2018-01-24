@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_SpotifyAPI
 {
-    class SpotifyAPI
+    public class SpotifyAPI
     {
         private string AuthCode;
 
