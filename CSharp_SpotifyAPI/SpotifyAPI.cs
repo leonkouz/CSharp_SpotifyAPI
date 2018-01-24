@@ -10,6 +10,8 @@ namespace CSharp_SpotifyAPI
     {
         private string AuthCode;
 
+        private string baseUrl = "https://api.spotify.com/v1/";
+
         public SpotifyAPI(string clientID, string redirectUri, string state, Scope scope, bool showDialog)
         {
             Authentication auth = new Authentication(clientID, redirectUri, state, scope, showDialog);
@@ -17,6 +19,33 @@ namespace CSharp_SpotifyAPI
             AuthCode = auth.Authenticate();
         }
 
+        /// <summary>
+        /// Get Spotify catalog information for a single album.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the album.</param>
+        /// <returns></returns>
+        public dynamic GetAlbum(int id)
+        {
+            string endpointUrl = "albums/" + id.ToString();
+
+            var url = baseUrl + endpointUrl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
+        }
+
+        /// <summary>
+        /// Get Spotify catalog information for a single album.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the album.</param>
+        /// <param name="market">An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
+        /// <returns></returns>
+        public dynamic GetAlbum(int id, string market)
+        {
+            throw new NotImplementedException();
+
+        }
 
     }
 }
