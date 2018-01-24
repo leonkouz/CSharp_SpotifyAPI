@@ -9,30 +9,56 @@ namespace CSharp_SpotifyAPI
 {
     class Authentication
     {
-        
-        private string _clientID;
-        private Scope _scope;
-
-
-
-
-        public Authentication()
-        {
-
-
-        }
-
-        public void Authenticate()
-        {
-            
-
-        }
-
-
-
         //https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow
 
-        string urlToAuthenticateWith = "https://accounts.spotify.com/authorize?client_id=305dbadf23cd4d9688868eb01857b54b&redirect_uri=http%3A%2F%2Flocalhost%3A62177&scope=user-read-private%20user-read-email&response_type=token&state=123";
+        private string _clientID;
+        private string _responseType = "token";
+        private string _redirectUri;
+        private string _state;
+        private Scope _scope;
+        private bool _showDialgog;
+        private string _url;
+        
+        public Authentication(string clientID, string redirectUri, string state, Scope scope, bool showDialog)
+        {
+            _clientID = clientID;
+            _redirectUri = redirectUri;
+            _state = state;
+            _scope = scope;
+            _showDialgog = showDialog;
 
+            BuildUrl();
+        }
+
+        private string BuildUrl()
+        {
+            StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize?");
+            builder.Append("client_id=" + _clientID);
+            builder.Append("&redirect_uri=" + _redirectUri);
+            builder.Append("&scope=" + _scope.GetDescription());
+            builder.Append("&response_type=" + _responseType);
+            builder.Append("&state=" + _state);
+            builder.Append("&show_dialog=" + _showDialgog);
+
+            return builder.ToString();
+        }
+
+        public string Authenticate()
+        {
+            string authCode = null;
+
+            //create server with specific port
+            SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
+            myServer.Listen();
+
+            Process.Start(_url);
+
+            myServer.OnAuth += e =>
+            {
+                authCode = e.Code;
+            };
+
+            return authCode;
+        }
     }
 }
