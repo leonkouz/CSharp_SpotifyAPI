@@ -11,6 +11,8 @@ namespace CSharp_SpotifyAPI
     {
         
         private string _clientID;
+        private Scope _scope;
+
 
 
 
