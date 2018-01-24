@@ -59,6 +59,9 @@ namespace CSharp_SpotifyAPI
 
         public string Authenticate()
         {
+            //Manual Reset event is used to wait for a response from HTTP Server to allow thread to continue
+            ManualResetEvent mre = new ManualResetEvent(false);
+
             string authCode = null;
 
             //create server with specific port
@@ -72,7 +75,11 @@ namespace CSharp_SpotifyAPI
             {
                 authCode = e.Code;
                 Console.WriteLine(e.Code);
+                mre.Set(); //Allows the main thread to continue
             };
+            
+            //Wait for response on authorisation
+            mre.WaitOne();
 
             return authCode;
         }
