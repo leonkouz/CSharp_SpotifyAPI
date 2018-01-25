@@ -141,6 +141,4 @@ namespace CSharp_SpotifyAPI
 
     }
 
-    
-
 }

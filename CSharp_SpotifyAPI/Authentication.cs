@@ -16,10 +16,9 @@ namespace CSharp_SpotifyAPI
         private string _responseType = "token"; //always set to "token"
         private string _redirectUri;
         private string _state;
-        private string _scope;
+        private Scope _scope;
         private bool _showDialgog;
         private string _url;
-        private string scopeContents;
 
         /// <summary>
         /// Authenticate with the Spotify API
@@ -32,20 +31,15 @@ namespace CSharp_SpotifyAPI
         /// <param name="scope">A space-separated list of scopes</param>
         /// <param name="showDialog">Whether or not to force the user to approve the app again if they’ve already done so. If false (default), a user who has already approved the application may be automatically 
         /// redirected to the URI specified by redirect_uri. If true, the user will not be automatically redirected and will have to approve the app again.</param>
-        public Authentication(string clientID, string redirectUri, string state, List<Scope> scope, bool showDialog)
+        public Authentication(string clientID, string redirectUri, string state, Scope scope, bool showDialog)
         {
-            // Updated to accept any number of scopes that are specified before running - Lock   
+            //Need to change the scope to a list to allow for multiple scopes to be used
+            
             _clientID = clientID;
             _redirectUri = redirectUri;
             _state = state;
-            foreach (Scope item in scope)
-            {
-                scopeContents += item.GetDescription() + "%20";
-            }
-            scopeContents = scopeContents.Remove(scopeContents.Length - 3);
-            _scope = scopeContents;
+            _scope = scope;
             _showDialgog = showDialog;
-
 
             BuildUrl();
         }
@@ -55,7 +49,7 @@ namespace CSharp_SpotifyAPI
             StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize?");
             builder.Append("client_id=" + _clientID);
             builder.Append("&redirect_uri=" + _redirectUri);
-            builder.Append("&scope=" + _scope);
+            builder.Append("&scope=" + _scope.GetDescription());
             builder.Append("&response_type=" + _responseType);
             builder.Append("&state=" + _state);
             builder.Append("&show_dialog=" + _showDialgog);
@@ -70,8 +64,7 @@ namespace CSharp_SpotifyAPI
 
             string authCode = null;
 
-            Task.Run(() =>
-            {
+            Task.Run(async () => {
 
                 //create server with specific port
                 SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);

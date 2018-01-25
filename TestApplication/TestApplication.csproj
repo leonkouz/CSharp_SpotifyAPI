@@ -31,9 +31,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSharp_SpotifyAPI">
       <HintPath>..\CSharp_SpotifyAPI\bin\Debug\CSharp_SpotifyAPI.dll</HintPath>
