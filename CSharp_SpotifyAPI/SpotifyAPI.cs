@@ -19,6 +19,8 @@ namespace CSharp_SpotifyAPI
             AuthCode = auth.Authenticate();
         }
 
+        #region Albums
+
         /// <summary>
         /// Get Spotify catalog information for a single album.
         /// </summary>
@@ -41,11 +43,48 @@ namespace CSharp_SpotifyAPI
         /// <param name="id">The Spotify ID for the album.</param>
         /// <param name="market">An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns></returns>
-        public dynamic GetAlbum(int id, string market)
+        public dynamic GetAlbum(string id, string market)
         {
-            throw new NotImplementedException();
+            string endpointUrl = "albums/" + id + "?market=" + market;
 
+            var url = baseUrl + endpointUrl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
         }
+
+        public dynamic GetSeveralAlbums(ICollection<string> ids)
+        {
+            //Concatenates all ids from the collection into a string
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointURl = "albums/?ids=" + albumIds;
+
+            string url = baseUrl + endpointURl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
+        }
+
+        public dynamic GetSeveralAlbums(ICollection<string> ids, string market)
+        {
+            //Concatenates all ids from the collection into a string
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointURl = "albums/?ids=" + albumIds + "&market=" + market;
+
+            string url = baseUrl + endpointURl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
+        }
+
+
+        #endregion
+
 
     }
 }
