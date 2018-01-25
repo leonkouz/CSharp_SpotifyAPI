@@ -21,7 +21,6 @@ namespace CSharp_SpotifyAPI
 
         #region Albums
 
-
         /// <summary>
         /// Get Spotify catalog information for a single album.
         /// </summary>
@@ -30,7 +29,6 @@ namespace CSharp_SpotifyAPI
         public dynamic GetAlbum(string id)
         {
             string endpointUrl = "albums/" + id;
-
             var url = baseUrl + endpointUrl;
 
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
@@ -44,13 +42,18 @@ namespace CSharp_SpotifyAPI
         /// <param name="id">The Spotify ID for the album.</param>
         /// <param name="market">An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns></returns>
-        public dynamic GetAlbum(int id, string market)
+        public dynamic GetAlbum(string id, string market)
         {
-            throw new NotImplementedException();
+            string endpointUrl = "albums/" + id + "?market=" + market;
+            var url = baseUrl + endpointUrl;
 
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
         }
 
         #endregion
+
 
     }
 }
