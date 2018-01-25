@@ -29,6 +29,7 @@ namespace CSharp_SpotifyAPI
         public dynamic GetAlbum(string id)
         {
             string endpointUrl = "albums/" + id;
+
             var url = baseUrl + endpointUrl;
 
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
@@ -45,12 +46,42 @@ namespace CSharp_SpotifyAPI
         public dynamic GetAlbum(string id, string market)
         {
             string endpointUrl = "albums/" + id + "?market=" + market;
+
             var url = baseUrl + endpointUrl;
 
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
 
             return json;
         }
+
+        public dynamic GetSeveralAlbums(ICollection<string> ids)
+        {
+            //Concatenates all ids from the collection into a string
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointURl = "albums/?ids=" + albumIds;
+
+            string url = baseUrl + endpointURl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
+        }
+
+        public dynamic GetSeveralAlbums(ICollection<string> ids, string market)
+        {
+            //Concatenates all ids from the collection into a string
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointURl = "albums/?ids=" + albumIds + "&market=" + market;
+
+            string url = baseUrl + endpointURl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
+        }
+
 
         #endregion
 

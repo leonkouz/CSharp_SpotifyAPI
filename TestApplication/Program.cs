@@ -18,7 +18,9 @@ namespace TestApplication
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
 
-            Console.WriteLine(api.GetAlbum("02S1126Q5E4gUEtpTI6W38", "ES"));
+            string[] test = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
+
+            Console.WriteLine(api.GetSeveralAlbums(test));
 
             Console.ReadLine();
 
