@@ -14,7 +14,9 @@ namespace TestApplication
             string clientID = "305dbadf23cd4d9688868eb01857b54b";
             string redirectID = "http%3A%2F%2Flocalhost%3A62177";
             string state = "123";
-            Scope scope = Scope.UserLibraryRead;
+            List <Scope> scope = new List<Scope>();
+            scope.Add(Scope.UserLibraryRead);
+            scope.Add(Scope.PlaylistReadPrivate);
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
 
