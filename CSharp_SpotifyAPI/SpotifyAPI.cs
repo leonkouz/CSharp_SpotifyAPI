@@ -24,9 +24,9 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="id">The Spotify ID for the album.</param>
         /// <returns></returns>
-        public dynamic GetAlbum(int id)
+        public dynamic GetAlbum(string id)
         {
-            string endpointUrl = "albums/" + id.ToString();
+            string endpointUrl = "albums/" + id;
 
             var url = baseUrl + endpointUrl;
 

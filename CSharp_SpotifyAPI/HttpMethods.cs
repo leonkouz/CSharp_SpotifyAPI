@@ -6,6 +6,8 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+
 
 namespace CSharp_SpotifyAPI
 {
@@ -83,29 +85,44 @@ namespace CSharp_SpotifyAPI
 
         public static string HttpGetWithAuthHeader(string url, string AuthCode)
         {
-            string json;
-
-            Dictionary<string, string> headers = new Dictionary<string, string>()
-            {
-                {"Authorization: Bearer", AuthCode }
-            };
-
+            string json = null;
+            
             //Creates a GET request
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.AutomaticDecompression = DecompressionMethods.GZip;
 
             //Add the headers to the header collection
-            foreach (var header in headers)
-            {
-                request.Headers.Add(header.Key, header.Value);
-            }
+            request.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
 
             //Sends the GET request
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            try
             {
-                json = reader.ReadToEnd();
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    json = reader.ReadToEnd();
+                }
+            }
+            catch(WebException wex)
+            {
+                string errorJson;
+
+                using (var errorResponse = (HttpWebResponse)wex.Response)
+                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                {
+                    errorJson = reader.ReadToEnd();
+                };
+                
+
+                //string gymnastics to get error message
+                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                string deserialisedJson = deserialisedResponse.ToString();
+                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                var splitJson = charRemoved.Split(new string[] { "message:"}, StringSplitOptions.None);
+                string errorMessage = splitJson[1].Split('\r')[0];
+
+                throw new Exception(errorMessage);
             }
 
             return json;
