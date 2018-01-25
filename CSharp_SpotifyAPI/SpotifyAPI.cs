@@ -12,7 +12,7 @@ namespace CSharp_SpotifyAPI
 
         private string baseUrl = "https://api.spotify.com/v1/";
 
-        public SpotifyAPI(string clientID, string redirectUri, string state, Scope scope, bool showDialog)
+        public SpotifyAPI(string clientID, string redirectUri, string state, List<Scope> scope, bool showDialog)
         {
             Authentication auth = new Authentication(clientID, redirectUri, state, scope, showDialog);
 
