@@ -19,6 +19,9 @@ namespace CSharp_SpotifyAPI
             AuthCode = auth.Authenticate();
         }
 
+        #region Albums
+
+
         /// <summary>
         /// Get Spotify catalog information for a single album.
         /// </summary>
@@ -46,6 +49,8 @@ namespace CSharp_SpotifyAPI
             throw new NotImplementedException();
 
         }
+
+        #endregion
 
     }
 }
