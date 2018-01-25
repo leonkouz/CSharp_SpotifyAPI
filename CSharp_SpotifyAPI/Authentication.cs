@@ -19,7 +19,6 @@ namespace CSharp_SpotifyAPI
         private string _scope;
         private bool _showDialgog;
         private string _url;
-        private string scopeContents;
 
         /// <summary>
         /// Authenticate with the Spotify API
@@ -32,22 +31,29 @@ namespace CSharp_SpotifyAPI
         /// <param name="scope">A space-separated list of scopes</param>
         /// <param name="showDialog">Whether or not to force the user to approve the app again if they’ve already done so. If false (default), a user who has already approved the application may be automatically 
         /// redirected to the URI specified by redirect_uri. If true, the user will not be automatically redirected and will have to approve the app again.</param>
-        public Authentication(string clientID, string redirectUri, string state, List<Scope> scope, bool showDialog)
+        public Authentication(string clientID, string redirectUri, string state, ICollection<Scope> scopes, bool showDialog)
         {
             // Updated to accept any number of scopes that are specified before running - Lock   
             _clientID = clientID;
             _redirectUri = redirectUri;
             _state = state;
-            foreach (Scope item in scope)
+            _scope = AggregateScopes(scopes);
+            _showDialgog = showDialog;
+
+            BuildUrl();
+        }
+
+        public string AggregateScopes(ICollection<Scope> scopes)
+        {
+            string scopeContents = null;
+
+            foreach (Scope item in scopes)
             {
                 scopeContents += item.GetDescription() + "%20";
             }
             scopeContents = scopeContents.Remove(scopeContents.Length - 3);
-            _scope = scopeContents;
-            _showDialgog = showDialog;
 
-
-            BuildUrl();
+            return scopeContents;
         }
 
         private void BuildUrl()
