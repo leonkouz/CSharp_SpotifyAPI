@@ -64,19 +64,22 @@ namespace CSharp_SpotifyAPI
 
             string authCode = null;
 
-            //create server with specific port
-            SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
-            myServer.Listen();
-            Console.WriteLine("Listening on 62177");
+            Task.Run(async () => {
+
+                //create server with specific port
+                SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
+                myServer.Listen();
+                Console.WriteLine("Listening on 62177");
+
+                myServer.OnAuth += e =>
+                {
+                    authCode = e.Code;
+                    Console.WriteLine(e.Code);
+                    mre.Set(); //Allows the main thread to continue
+                };
+            });
 
             Process.Start(_url);
-
-            myServer.OnAuth += e =>
-            {
-                authCode = e.Code;
-                Console.WriteLine(e.Code);
-                mre.Set(); //Allows the main thread to continue
-            };
             
             //Wait for response on authorisation
             mre.WaitOne();
