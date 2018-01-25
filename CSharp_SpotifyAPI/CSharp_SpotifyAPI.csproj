@@ -45,10 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication.cs" />
+    <Compile Include="Enums\Markets.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scope.cs" />
+    <Compile Include="Enums\Scope.cs" />
     <Compile Include="SpotifyAPI.cs" />
     <Compile Include="Utility\StringUtil.cs" />
   </ItemGroup>
