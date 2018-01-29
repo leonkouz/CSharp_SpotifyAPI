@@ -126,21 +126,4 @@ namespace CSharp_SpotifyAPI.Enums
         UserReadRecentlyPlayed = 18
 
     }
-
-    public static class ScopeExtensions
-    {
-
-        public static string GetDescription(this Scope scope)
-        {
-            FieldInfo fieldInfo = scope.GetType().GetField(scope.ToString());
-            if (fieldInfo == null) return null;
-            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
-            return attribute.Description;
-                        
-        }
-
-    }
-
-    
-
 }
