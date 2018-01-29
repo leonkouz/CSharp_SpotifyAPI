@@ -31,7 +31,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id;
 
-            var url = baseUrl + endpointUrl;
+            string url = baseUrl + endpointUrl;
 
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
 
@@ -48,7 +48,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id + "?market=" + market;
 
-            var url = baseUrl + endpointUrl;
+            string url = baseUrl + endpointUrl;
 
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
 
@@ -93,15 +93,23 @@ namespace CSharp_SpotifyAPI
 
             return json;
         }
+        
+        #endregion
 
-        public dynamic GetAlbumByArtist()
+        #region Artists
+
+        public dynamic GetAlbumByArtist(string artistId)
         {
+            string endpointUrl = "artists/" + artistId + "/albums";
 
+            string url = baseUrl + endpointUrl;
+
+            var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
+
+            return json;
         }
 
 
         #endregion
-
-
     }
 }

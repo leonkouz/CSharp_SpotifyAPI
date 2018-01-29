@@ -21,9 +21,14 @@ namespace TestApplication
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
 
+            /*
             string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
 
-            Console.WriteLine(api.GetSeveralAlbums(albumIds, Markets.AD));
+            Console.WriteLine(api.GetSeveralAlbums(albumIds, Markets.AD));*/
+
+
+            Console.WriteLine(api.GetAlbumByArtist("2zFkwocH9Ah8KpUzydbcrO"));
+
 
             Console.ReadLine();
 

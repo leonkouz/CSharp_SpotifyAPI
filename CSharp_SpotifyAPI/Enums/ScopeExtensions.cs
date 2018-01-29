@@ -10,6 +10,7 @@ namespace CSharp_SpotifyAPI.Enums
 {
     public static class ScopeExtensions
     {
+        
         public static string GetDescription(this Scope scope)
         {
             FieldInfo fieldInfo = scope.GetType().GetField(scope.ToString());
