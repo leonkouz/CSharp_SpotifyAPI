@@ -69,7 +69,7 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
-        public dynamic GetSeveralAlbums(ICollection<string> ids, string market)
+        public dynamic GetSeveralAlbums(ICollection<string> ids, Markets market)
         {
             //Concatenates all ids from the collection into a string
             string albumIds = ids.Aggregate((i, j) => i + ',' + j);

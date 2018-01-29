@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharp_SpotifyAPI;
+using CSharp_SpotifyAPI.Enums;
 
 namespace TestApplication
 {
@@ -22,7 +23,7 @@ namespace TestApplication
 
             string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
 
-            Console.WriteLine(api.GetSeveralAlbums(albumIds));
+            Console.WriteLine(api.GetSeveralAlbums(albumIds, Markets.AD));
 
             Console.ReadLine();
 
