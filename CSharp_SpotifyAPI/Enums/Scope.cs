@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharp_SpotifyAPI
+namespace CSharp_SpotifyAPI.Enums
 {
     public enum Scope
     {

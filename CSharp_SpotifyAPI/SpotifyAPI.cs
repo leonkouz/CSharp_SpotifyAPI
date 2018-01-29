@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CSharp_SpotifyAPI.Enums;
 
 namespace CSharp_SpotifyAPI
 {
@@ -43,7 +44,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="id">The Spotify ID for the album.</param>
         /// <param name="market">An ISO 3166-1 alpha-2 country code. Provide this parameter if you want to apply Track Relinking.</param>
         /// <returns></returns>
-        public dynamic GetAlbum(string id, string market)
+        public dynamic GetAlbum(string id, Markets market)
         {
             string endpointUrl = "albums/" + id + "?market=" + market;
 
