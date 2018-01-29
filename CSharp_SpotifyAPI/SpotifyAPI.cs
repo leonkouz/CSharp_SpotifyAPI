@@ -55,6 +55,11 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the albums</param>
+        /// <returns></returns>
         public dynamic GetSeveralAlbums(ICollection<string> ids)
         {
             //Concatenates all ids from the collection into a string
@@ -69,6 +74,12 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Get Spotify catalog information for multiple albums identified by their Spotify IDs.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the albums</param>
+        /// <param name="market">Specifies a market to retrieve information from</param>
+        /// <returns></returns>
         public dynamic GetSeveralAlbums(ICollection<string> ids, Markets market)
         {
             //Concatenates all ids from the collection into a string
@@ -81,6 +92,11 @@ namespace CSharp_SpotifyAPI
             var json = HttpMethods.HttpGetWithAuthHeader(url, AuthCode);
 
             return json;
+        }
+
+        public dynamic GetAlbumByArtist()
+        {
+
         }
 
 
