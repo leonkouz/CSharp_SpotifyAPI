@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,153 +9,188 @@ namespace CSharp_SpotifyAPI.Enums
 {
     public enum Markets
     {
+        [Description("Andorra")]
         AD = 0,
 
+        [Description("Argentina")]
         AR = 1,
 
+        [Description("Austria")]
         AT = 2,
 
+        [Description("Australia")]
         AU = 3,
 
+        [Description("Belgium")]
         BE = 4,
 
+        [Description("Bulgaria")]
         BG = 5,
 
-        BO,
+        [Description("Bolivia")]
+        BO = 6,
 
-        BR,
+        [Description("Brazil")]
+        BR = 7,
 
-        CA,
+        [Description("Canada")]
+        CA = 8,
 
-        CH,
+        [Description("Switzerland")]
+        CH = 9,
 
-        CL,
+        [Description("Chile")]
+        CL = 10,
 
-        CO,
+        [Description("Colombia")]
+        CO = 11,
 
-        CR,
+        [Description("Costa Rica")]
+        CR = 12,
 
-        CY,
+        [Description("Cyprus")]
+        CY = 13,
 
-        CZ,
+        [Description("Czechia")]
+        CZ = 14,
 
-        DE,
+        [Description("German")]
+        DE = 15,
 
-        DK,
+        [Description("Denmark")]
+        DK = 16,
 
-        DO,
+        [Description("Dominican Republic")]
+        DO = 17,
 
-        EC,
+        [Description("Ecuador")]
+        EC = 18,
 
-        EE,
+        [Description("Estonia")]
+        EE = 19,
 
-        ES,
+        [Description("Spain")]
+        ES = 20,
 
-        FI,
+        [Description("Finland")]
+        FI = 21,
 
-        FR,
+        [Description("France")]
+        FR = 22,
 
-        GB,
+        [Description("United Kingdom")]
+        GB = 23,
 
-        GR,
+        [Description("Greece")]
+        GR = 24,
 
-        GT,
+        [Description("Guatemala")]
+        GT = 25,
 
-        HK,
+        [Description("Hong Kong")]
+        HK = 26,
 
-        HN,
+        [Description("Honduras")]
+        HN = 27,
 
-        HU,
+        [Description("Hungary")]
+        HU = 28,
 
-        ID,
+        [Description("Indonesia")]
+        ID = 29,
 
-        IE,
+        [Description("Ireland")]
+        IE = 30,
 
-        IS,
+        [Description("Iceland")]
+        IS = 31,
 
-        IT,
+        [Description("Italy")]
+        IT = 32,
 
-        JP,
+        [Description("Japan")]
+        JP = 33,
 
-        LI,
+        [Description("Liechtenstein")]
+        LI = 34,
 
-        LT,
+        [Description("Lithuania")]
+        LT = 35,
 
-        LU,
+        [Description("Luxembourg")]
+        LU = 36,
 
-        LV,
+        [Description("Latvia")]
+        LV = 37,
 
-        MC,
+        [Description("Monaco")]
+        MC = 38,
 
-        MT,
+        [Description("Malta")]
+        MT = 39,
 
-        MX,
+        [Description("Mexico")]
+        MX = 40,
 
-        MY,
+        [Description("Malaysia")]
+        MY = 41,
 
-        NI,
-        
-        NL,
+        [Description("Nicaragua")]
+        NI = 42,
 
-        NO,
+        [Description("Netherlands")]
+        NL = 43,
 
-        NZ,
+        [Description("Norway")]
+        NO = 44,
 
-        PA,
+        [Description("New Zealand")]
+        NZ = 45,
 
-        PE,
+        [Description("Panama")]
+        PA = 46,
 
-        PH,
+        [Description("Peru")]
+        PE = 47,
 
-        PL,
+        [Description("Philippines")]
+        PH = 48,
 
-        PT,
+        [Description("Poland")]
+        PL = 49,
 
-        PY,
+        [Description("Portugal")]
+        PT = 50,
 
-        SE,
+        [Description("Paraguay")]
+        PY = 51,
 
-        SG,
+        [Description("Sweden")]
+        SE = 52,
 
-        SK,
+        [Description("Singapore")]
+        SG = 53,
 
-        TH,
+        [Description("Slovakia")]
+        SK = 54,
 
-        TR,
+        [Description("Thailand")]
+        TH = 55,
 
-        TW,
+        [Description("Turkey")]
+        TR = 56,
 
-        US,
+        [Description("Taiwan")]
+        TW = 57,
 
-        UY,
+        [Description("United States of America")]
+        US = 58,
 
-        VN,
+        [Description("Uruguay")]
+        UY = 59,
 
-
-   
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+        [Description("Viet Nam")]
+        VN = 60,
+                
     }
 }

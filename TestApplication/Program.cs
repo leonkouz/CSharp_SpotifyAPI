@@ -14,17 +14,15 @@ namespace TestApplication
             string clientID = "305dbadf23cd4d9688868eb01857b54b";
             string redirectID = "http%3A%2F%2Flocalhost%3A62177";
             string state = "123";
-            Scope scope = Scope.UserLibraryRead;
+            Scope scope = Scope.None;
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
 
-            string[] test = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
+            string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
 
-            Console.WriteLine(api.GetSeveralAlbums(test));
+            Console.WriteLine(api.GetSeveralAlbums(albumIds));
 
             Console.ReadLine();
-
-
 
         }
     }
