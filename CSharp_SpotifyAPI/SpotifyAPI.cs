@@ -198,9 +198,30 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get Spotify catalog information about an artist’s top tracks by country.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the artist.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetArtistsTopTracks(string id, Market market)
+        {
+            string endpointUrl = "artists/" + id + "/top-tracks?country=" + market;
 
-        
+            return HttpMethods.DownloadData(endpointUrl);
+        }
 
+        /// <summary>
+        /// Get Spotify catalog information about artists similar to a given artist. Similarity is based on analysis of the Spotify community’s listening history.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the artist.</param>
+        /// <returns></returns>
+        public dynamic GetArtistsRelatedArtists(string id)
+        {
+            string endpointUrl = "artists/" + id + "/related-artists";
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
 
         #endregion
     }

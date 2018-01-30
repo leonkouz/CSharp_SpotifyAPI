@@ -38,13 +38,16 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetArtist("4F7Q5NV6h5TSwCainz8S5A"));
 
-            List<string> artistIds = new List<string>()
+            /*List<string> artistIds = new List<string>()
             {
                 "34W7ZCX0LZeJd8q6boKGOk", "4PDpGtF16XpqvXxsrFwQnN", "3HJzLaMbS0jMabxS3wttGk"
             };
 
-            Console.WriteLine(api.GetSeveralArtists(artistIds));
+            Console.WriteLine(api.GetSeveralArtists(artistIds));*/
 
+            //Console.WriteLine(api.GetArtistsTopTracks("6Zq5ky484xYTgxE6dQ8yHh", Market.AD));
+
+            Console.WriteLine(api.GetArtistsRelatedArtists("34W7ZCX0LZeJd8q6boKGOk"));
 
             Console.ReadLine();
 

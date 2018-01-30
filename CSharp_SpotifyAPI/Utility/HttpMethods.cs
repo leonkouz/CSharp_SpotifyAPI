@@ -119,7 +119,6 @@ namespace CSharp_SpotifyAPI
                 {
                     errorJson = reader.ReadToEnd();
                 };
-                
 
                 //string gymnastics to get error message
                 dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
@@ -146,8 +145,6 @@ namespace CSharp_SpotifyAPI
             var json = HttpGetWithAuthHeader(url, Constants.AuthCode);
 
             return json;
-
         }
-
     }
 }
