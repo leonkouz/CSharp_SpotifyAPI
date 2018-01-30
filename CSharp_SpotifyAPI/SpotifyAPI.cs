@@ -141,7 +141,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
         /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
         /// <returns>JSON response</returns>
-        public dynamic GetAlbumByArtist(string id, int limit, int offset)
+        public dynamic GetArtistsAlbums(string id, int limit, int offset)
         {
             string endpointUrl = "artists/" + id + "/albums?limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
@@ -156,7 +156,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
         /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
         /// <returns>JSON response</returns>
-        public dynamic GetAlbumByArtist(string id, AlbumType albumType, int limit, int offset)
+        public dynamic GetArtistsAlbums(string id, AlbumType albumType, int limit, int offset)
         {
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumType.GetDescription() + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
@@ -171,7 +171,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
         /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
         /// <returns>JSON response</returns>
-        public dynamic GetAlbumByArtist(string id, ICollection<AlbumType> albumType, int limit, int offset)
+        public dynamic GetArtistsAlbums(string id, ICollection<AlbumType> albumType, int limit, int offset)
         {
             string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
 
@@ -189,7 +189,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
         /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums.</param>
         /// <returns>JSON response</returns>
-        public dynamic GetAlbumByArtist(string id, ICollection<AlbumType> albumType, Market market, int limit, int offset)
+        public dynamic GetArtistsAlbums(string id, ICollection<AlbumType> albumType, Market market, int limit, int offset)
         {
             string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
 

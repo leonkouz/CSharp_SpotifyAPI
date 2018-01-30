@@ -32,7 +32,7 @@ namespace TestApplication
                 AlbumType.Single, AlbumType.Album, AlbumType.ApppearsOn, AlbumType.Compilation
             };
 
-            Console.WriteLine(api.GetAlbumByArtist("2zFkwocH9Ah8KpUzydbcrO", albumTypes, 20, 0));*/
+            Console.WriteLine(api.GetArtistsAlbums("2zFkwocH9Ah8KpUzydbcrO", albumTypes, 20, 0));*/
 
             //Console.WriteLine(api.GetAlbumTracks("3tqWiJf0QKpxX2IItsAl24", Market.AD, 20, 0));
 
