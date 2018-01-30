@@ -73,11 +73,18 @@ namespace CSharp_SpotifyAPI
 
             return HttpMethods.DownloadData(endpointUrl);
         }
-        
+
         #endregion
 
         #region Artists
 
+        /// <summary>
+        /// Get Spotify catalog information about an artist’s albums.
+        /// </summary>
+        /// <param name="artistId">The Spotify ID for the artist.</param>
+        /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
+        /// <returns></returns>
         public dynamic GetAlbumByArtist(string artistId, int limit, int offset)
         {
             string endpointUrl = "artists/" + artistId + "/albums?limit=" + limit.ToString() + "&offset=" + offset.ToString();
@@ -85,6 +92,14 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get Spotify catalog information about an artist’s albums.
+        /// </summary>
+        /// <param name="artistId">The Spotify ID for the artist.</param>
+        /// <param name="albumType">Used to filter the response. If not supplied, all album types will be returned.</param>
+        /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
+        /// <returns></returns>
         public dynamic GetAlbumByArtist(string artistId, AlbumType albumType, int limit, int offset)
         {
             string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumType.GetDescription() + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
@@ -92,6 +107,14 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get Spotify catalog information about an artist’s albums.
+        /// </summary>
+        /// <param name="artistId">The Spotify ID for the artist.</param>
+        /// <param name="albumType">Used to filter the response. If not supplied, all album types will be returned.</param>
+        /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums. </param>
+        /// <returns></returns>
         public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, int limit, int offset)
         {
             string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
@@ -101,6 +124,15 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get Spotify catalog information about an artist’s albums.
+        /// </summary>
+        /// <param name="artistId">The Spotify ID for the artist.</param>
+        /// <param name="albumType">Used to filter the response. If not supplied, all album types will be returned.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The number of album objects to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first album to return. Default: 0 (i.e., the first album). Use with limit to get the next set of albums.</param>
+        /// <returns></returns>
         public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, Market market, int limit, int offset)
         {
             string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
