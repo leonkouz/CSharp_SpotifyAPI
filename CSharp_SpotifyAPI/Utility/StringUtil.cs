@@ -16,11 +16,11 @@ namespace CSharp_SpotifyAPI
             return StringToRemoveFrom;
         }
 
-        public static string AggregateEnums<T>(ICollection<T> scopes)
+        public static string AggregateCollection<T>(ICollection<T> col)
         {
             string scopeContents = null;
 
-            foreach (T item in scopes)
+            foreach (T item in col)
             {
                 scopeContents += item.GetDescription() + ",";
             }
