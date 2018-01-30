@@ -38,23 +38,10 @@ namespace CSharp_SpotifyAPI
             _clientID = clientID;
             _redirectUri = redirectUri;
             _state = state;
-            _scope = AggregateScopes(scopes);
+            _scope = StringUtil.AggregateEnums(scopes);
             _showDialgog = showDialog;
 
             BuildUrl();
-        }
-
-        public string AggregateScopes(ICollection<Scope> scopes)
-        {
-            string scopeContents = null;
-
-            foreach (Scope item in scopes)
-            {
-                scopeContents += item.GetDescription() + "%20";
-            }
-            scopeContents = scopeContents.Remove(scopeContents.Length - 3);
-
-            return scopeContents;
         }
 
         private void BuildUrl()
