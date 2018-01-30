@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharp_SpotifyAPI.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,20 @@ namespace CSharp_SpotifyAPI
 
             return StringToRemoveFrom;
         }
+
+        public static string AggregateEnums<T>(ICollection<T> scopes)
+        {
+            string scopeContents = null;
+
+            foreach (T item in scopes)
+            {
+                scopeContents += item.GetDescription() + "%20";
+            }
+            scopeContents = scopeContents.Remove(scopeContents.Length - 3);
+
+            return scopeContents;
+
+        }
+
     }
 }

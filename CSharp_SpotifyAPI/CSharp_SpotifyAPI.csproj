@@ -47,7 +47,7 @@
     <Compile Include="Authentication.cs" />
     <Compile Include="Enums\AlbumType.cs" />
     <Compile Include="Enums\Markets.cs" />
-    <Compile Include="Enums\ScopeExtensions.cs" />
+    <Compile Include="Enums\EnumExtensions.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

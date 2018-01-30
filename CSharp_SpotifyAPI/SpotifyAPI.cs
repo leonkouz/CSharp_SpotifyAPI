@@ -109,6 +109,20 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType)
+        {
+
+
+
+        }
+
+        public dynamic GetAlbumByArtist(string artistId, AlbumType albumType)
+        {
+
+
+
+
+        }
 
         #endregion
     }

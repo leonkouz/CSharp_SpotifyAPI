@@ -8,27 +8,15 @@ using System.Threading.Tasks;
 
 namespace CSharp_SpotifyAPI.Enums
 {
-    public static class ScopeExtensions
+    public static class EnumExtensions
     {
         
-        public static string GetDescription(this Scope scope)
+        public static string GetDescription<T>(this T scope)
         {
             FieldInfo fieldInfo = scope.GetType().GetField(scope.ToString());
             if (fieldInfo == null) return null;
             var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
             return attribute.Description;
         }
-
-        public static string GetDescription(this AlbumType scope)
-        {
-            FieldInfo fieldInfo = scope.GetType().GetField(scope.ToString());
-            if (fieldInfo == null) return null;
-            var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
-            return attribute.Description;
-        }
-
-
-
-
     }
 }
