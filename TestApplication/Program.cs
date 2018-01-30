@@ -36,7 +36,14 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetAlbumTracks("3tqWiJf0QKpxX2IItsAl24", Market.AD, 20, 0));
 
-            Console.WriteLine(api.GetArtist("4F7Q5NV6h5TSwCainz8S5A"));
+            //Console.WriteLine(api.GetArtist("4F7Q5NV6h5TSwCainz8S5A"));
+
+            List<string> artistIds = new List<string>()
+            {
+                "34W7ZCX0LZeJd8q6boKGOk", "4PDpGtF16XpqvXxsrFwQnN", "3HJzLaMbS0jMabxS3wttGk"
+            };
+
+            Console.WriteLine(api.GetSeveralArtists(artistIds));
 
 
             Console.ReadLine();

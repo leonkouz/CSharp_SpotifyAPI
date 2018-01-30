@@ -120,6 +120,21 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
+        /// Get Spotify catalog information for several artists based on their Spotify IDs.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the artists. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic GetSeveralArtists(ICollection<string> ids)
+        {
+            string artistIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "artists?ids=" + artistIds;
+
+            return HttpMethods.DownloadData(endpointUrl);
+
+        }
+
+        /// <summary>
         /// Get Spotify catalog information about an artist’s albums.
         /// </summary>
         /// <param name="artistId">The Spotify ID for the artist.</param>
@@ -158,7 +173,7 @@ namespace CSharp_SpotifyAPI
         /// <returns>JSON response</returns>
         public dynamic GetAlbumByArtist(string id, ICollection<AlbumType> albumType, int limit, int offset)
         {
-            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
+            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
@@ -176,7 +191,7 @@ namespace CSharp_SpotifyAPI
         /// <returns>JSON response</returns>
         public dynamic GetAlbumByArtist(string id, ICollection<AlbumType> albumType, Market market, int limit, int offset)
         {
-            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
+            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&market=" + market + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 

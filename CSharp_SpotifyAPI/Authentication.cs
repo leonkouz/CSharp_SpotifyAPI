@@ -80,7 +80,6 @@ namespace CSharp_SpotifyAPI
 
             Task.Run(() =>
             {
-
                 //create server with specific port
                 SimpleHttpServer myServer = new SimpleHttpServer(62177, AuthType.Implicit);
                 myServer.Listen();

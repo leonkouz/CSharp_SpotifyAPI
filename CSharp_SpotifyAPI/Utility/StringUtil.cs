@@ -16,7 +16,7 @@ namespace CSharp_SpotifyAPI
             return StringToRemoveFrom;
         }
 
-        public static string AggregateCollection<T>(ICollection<T> col)
+        public static string AggregateEnums<T>(ICollection<T> col)
         {
             string scopeContents = null;
 
