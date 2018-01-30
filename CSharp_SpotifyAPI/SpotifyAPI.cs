@@ -87,7 +87,7 @@ namespace CSharp_SpotifyAPI
 
         public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType)
         {
-            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
+            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
 
             string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited;
 
@@ -103,7 +103,7 @@ namespace CSharp_SpotifyAPI
 
         public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, Market market)
         {
-            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
+            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
 
             string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited + "&market=" + market;
 
