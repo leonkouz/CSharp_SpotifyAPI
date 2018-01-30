@@ -108,6 +108,18 @@ namespace CSharp_SpotifyAPI
         #region Artists
 
         /// <summary>
+        /// Get Spotify catalog information for a single artist identified by their unique Spotify ID.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the artist.</param>
+        /// <returns></returns>
+        public dynamic GetArtist(string id)
+        {
+            string endpointUrl = "artists/" + id;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
         /// Get Spotify catalog information about an artist’s albums.
         /// </summary>
         /// <param name="artistId">The Spotify ID for the artist.</param>
@@ -171,8 +183,8 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
-        
 
+        
 
 
         #endregion

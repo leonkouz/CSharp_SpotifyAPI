@@ -34,7 +34,9 @@ namespace TestApplication
 
             Console.WriteLine(api.GetAlbumByArtist("2zFkwocH9Ah8KpUzydbcrO", albumTypes, 20, 0));*/
 
-            Console.WriteLine(api.GetAlbumTracks("3tqWiJf0QKpxX2IItsAl24", Market.AD, 20, 0));
+            //Console.WriteLine(api.GetAlbumTracks("3tqWiJf0QKpxX2IItsAl24", Market.AD, 20, 0));
+
+            Console.WriteLine(api.GetArtist("4F7Q5NV6h5TSwCainz8S5A"));
 
 
             Console.ReadLine();
