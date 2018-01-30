@@ -22,9 +22,10 @@ namespace CSharp_SpotifyAPI
 
             foreach (T item in scopes)
             {
-                scopeContents += item.GetDescription() + "%20";
+                scopeContents += item.GetDescription() + ",";
             }
-            scopeContents = scopeContents.Remove(scopeContents.Length - 3);
+            //Removes the extra comma at the end
+            scopeContents = scopeContents.Remove(scopeContents.Length - 1);
 
             return scopeContents;
 

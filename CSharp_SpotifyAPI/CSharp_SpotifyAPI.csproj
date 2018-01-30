@@ -45,8 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Enums\AlbumType.cs" />
-    <Compile Include="Enums\Markets.cs" />
+    <Compile Include="Enums\Market.cs" />
     <Compile Include="Enums\EnumExtensions.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />

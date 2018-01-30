@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSharp_SpotifyAPI.Enums
 {
-    public enum Markets
+    public enum Market
     {
         [Description("Andorra")]
         AD = 0,

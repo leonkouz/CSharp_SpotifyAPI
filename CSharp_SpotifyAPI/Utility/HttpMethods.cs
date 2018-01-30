@@ -83,6 +83,12 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Sends a HTTP Get request with an authorisation header
+        /// </summary>
+        /// <param name="url">The URL the request is sent to </param>
+        /// <param name="AuthCode">Autorisation Code</param>
+        /// <returns></returns>
         public static string HttpGetWithAuthHeader(string url, string AuthCode)
         {
             string json = null;
@@ -126,6 +132,21 @@ namespace CSharp_SpotifyAPI
             }
 
             return json;
+        }
+
+        /// <summary>
+        /// Downloads JSON from Spotify API
+        /// </summary>
+        /// <param name="url">The Spotify API endpoint url</param>
+        /// <returns></returns>
+        public static dynamic DownloadData(string endpointUrl)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpGetWithAuthHeader(url, Constants.AuthCode);
+
+            return json;
+
         }
 
     }
