@@ -78,37 +78,40 @@ namespace CSharp_SpotifyAPI
 
         #region Artists
 
-        public dynamic GetAlbumByArtist(string artistId)
+        public dynamic GetAlbumByArtist(string artistId, int limit, int offset)
         {
-            string endpointUrl = "artists/" + artistId + "/albums";
+            string endpointUrl = "artists/" + artistId + "/albums?limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
             return HttpMethods.DownloadData(endpointUrl);
         }
 
-        public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType)
+        public dynamic GetAlbumByArtist(string artistId, AlbumType albumType, int limit, int offset)
         {
-            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
-
-            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited;
+            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumType.GetDescription() + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
             return HttpMethods.DownloadData(endpointUrl);
         }
 
-        public dynamic GetAlbumByArtist(string artistId, AlbumType albumType)
-        {
-            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumType.GetDescription();
-
-            return HttpMethods.DownloadData(endpointUrl);
-        }
-
-        public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, Market market)
+        public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, int limit, int offset)
         {
             string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
 
-            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited + "&market=" + market;
+            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
             return HttpMethods.DownloadData(endpointUrl);
         }
+
+        public dynamic GetAlbumByArtist(string artistId, ICollection<AlbumType> albumType, Market market, int limit, int offset)
+        {
+            string albumTypeDelimited = StringUtil.AggregateCollection(albumType);
+
+            string endpointUrl = "artists/" + artistId + "/albums?album_type=" + albumTypeDelimited + "&market=" + market + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+
+
 
 
         #endregion

@@ -29,10 +29,10 @@ namespace TestApplication
 
             List<AlbumType> albumTypes = new List<AlbumType>()
             {
-                AlbumType.Single
+                AlbumType.Single, AlbumType.Album, AlbumType.ApppearsOn, AlbumType.Compilation
             };
 
-            Console.WriteLine(api.GetAlbumByArtist("2zFkwocH9Ah8KpUzydbcrO", albumTypes, Market.AD));
+            Console.WriteLine(api.GetAlbumByArtist("2zFkwocH9Ah8KpUzydbcrO", albumTypes, 20, 0));
 
 
             Console.ReadLine();
