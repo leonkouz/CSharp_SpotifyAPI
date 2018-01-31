@@ -16,7 +16,7 @@ namespace CSharp_SpotifyAPI
             return StringToRemoveFrom;
         }
 
-        public static string AggregateEnums<T>(ICollection<T> col)
+        public static string AggregateEnumsWithDescription<T>(ICollection<T> col)
         {
             string scopeContents = null;
 
@@ -28,7 +28,20 @@ namespace CSharp_SpotifyAPI
             scopeContents = scopeContents.Remove(scopeContents.Length - 1);
 
             return scopeContents;
+        }
 
+        public static string AggregateEnums<T>(ICollection<T> col)
+        {
+            string scopeContents = null;
+
+            foreach (T item in col)
+            {
+                scopeContents += item.ToString() + ",";
+            }
+            //Removes the extra comma at the end
+            scopeContents = scopeContents.Remove(scopeContents.Length - 1);
+
+            return scopeContents;
         }
 
     }

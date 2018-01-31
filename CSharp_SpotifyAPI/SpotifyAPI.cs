@@ -173,7 +173,7 @@ namespace CSharp_SpotifyAPI
         /// <returns>JSON response</returns>
         public dynamic GetArtistsAlbums(string id, ICollection<AlbumType> albumType, int limit, int offset)
         {
-            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
+            string albumTypeDelimited = StringUtil.AggregateEnumsWithDescription(albumType);
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
@@ -191,7 +191,7 @@ namespace CSharp_SpotifyAPI
         /// <returns>JSON response</returns>
         public dynamic GetArtistsAlbums(string id, ICollection<AlbumType> albumType, Market market, int limit, int offset)
         {
-            string albumTypeDelimited = StringUtil.AggregateEnums(albumType);
+            string albumTypeDelimited = StringUtil.AggregateEnumsWithDescription(albumType);
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&market=" + market + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
@@ -324,13 +324,56 @@ namespace CSharp_SpotifyAPI
         #endregion
 
         #region Search
-        
-        public dynamic Search()
+
+        /// <summary>
+        /// Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
+        /// </summary>
+        /// <param name="query">The search query's keywords (and optional field filters and operators), for example: roadhouse%20blues</param>
+        /// <param name="type">List of item types to search across</param>
+        /// <param name="limit">The maximum number of results to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first result to return. Default: 0 (i.e., the first result). Maximum offset: 100</param>
+        /// <returns></returns>
+        public dynamic Search(string query, SearchType type, int limit, int offset)
         {
+            string endpointUrl = "search?q=" + query + "&type=" + type + "&limit=" + limit + "&offset=" + offset;
 
-
+            return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
+        /// </summary>
+        /// <param name="query">The search query's keywords (and optional field filters and operators), for example: roadhouse%20blues</param>
+        /// <param name="types">List of item types to search across</param>
+        /// <param name="limit">The maximum number of results to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first result to return. Default: 0 (i.e., the first result). Maximum offset: 100</param>
+        /// <returns></returns>
+        public dynamic Search(string query, ICollection<SearchType> types, int limit, int offset)
+        {
+            string searchTypesDelimited = StringUtil.AggregateEnums(types);
+
+            string endpointUrl = "search?q=" + query + "&type=" + searchTypesDelimited + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get Spotify catalog information about artists, albums, tracks or playlists that match a keyword string.
+        /// </summary>
+        /// <param name="query">The search query's keywords (and optional field filters and operators), for example: roadhouse%20blues</param>
+        /// <param name="types">List of item types to search across</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of results to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first result to return. Default: 0 (i.e., the first result). Maximum offset: 100</param>
+        /// <returns></returns>
+        public dynamic Search(string query, ICollection<SearchType> types, Market market, int limit, int offset)
+        {
+            string searchTypesDelimited = StringUtil.AggregateEnums(types);
+
+            string endpointUrl = "search?q=" + query + "&type=" + searchTypesDelimited + "&market=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
 
         #endregion
 
