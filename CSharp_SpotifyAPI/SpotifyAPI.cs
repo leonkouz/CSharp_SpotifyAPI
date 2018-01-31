@@ -321,7 +321,18 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        #endregion
+
+        #region Search
+        
+        public dynamic Search()
+        {
+
+
+        }
+
 
         #endregion
+
     }
 }
