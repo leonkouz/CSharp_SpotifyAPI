@@ -377,5 +377,22 @@ namespace CSharp_SpotifyAPI
 
         #endregion
 
+        #region Playlists
+
+        /// <summary>
+        /// Get a list of the playlists owned or followed by a Spotify user.
+        /// </summary>
+        /// <param name="id">The user's Spotify user ID.</param>
+        /// <param name="limit">The maximum number of playlists to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first playlist to return. Default: 0 (the first object). Maximum offset: 100.</param>
+        /// <returns></returns>
+        public dynamic GetUsersPlaylists(string id, int limit, int offset)
+        {
+            string endpointUrl = "users/" + id + "/playlists?limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        #endregion
     }
 }
