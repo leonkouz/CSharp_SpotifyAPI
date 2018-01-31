@@ -281,6 +281,18 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get audio feature information for a single track identified by its unique Spotify ID.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the track.</param>
+        /// <returns></returns>
+        public dynamic GetAudioFeaturesForTrack(string id)
+        {
+            string endpointUrl = "audio-features/" + id;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
         #endregion
     }
 }
