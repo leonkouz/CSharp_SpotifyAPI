@@ -49,7 +49,14 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetArtistsRelatedArtists("34W7ZCX0LZeJd8q6boKGOk"));
 
-            Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
+            //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
+
+            List<string> trackids = new List<string>()
+            {
+                "4r1zlgDyILnZq9fEaSwFGd", "184r9uzj1Coildl16EK5Qz"
+            };
+
+            Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));
 
             Console.ReadLine();
 
