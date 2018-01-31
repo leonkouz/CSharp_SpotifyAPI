@@ -293,6 +293,21 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get audio features for multiple tracks based on their Spotify IDs.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the tracks. Maximum: 100 IDs.</param>
+        /// <returns></returns>
+        public dynamic GetAudioFeaturesForSeveralTracks(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "audio-features?ids=" + trackIds;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+
         #endregion
     }
 }

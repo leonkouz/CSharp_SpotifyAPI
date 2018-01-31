@@ -51,14 +51,16 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
-            /*List<string> trackids = new List<string>()
+            List<string> trackids = new List<string>()
             {
                 "4r1zlgDyILnZq9fEaSwFGd", "184r9uzj1Coildl16EK5Qz"
             };
 
-            Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
+            /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
 
-            Console.WriteLine(api.GetAudioFeaturesForTrack("184r9uzj1Coildl16EK5Qz"));
+            //Console.WriteLine(api.GetAudioFeaturesForTrack("184r9uzj1Coildl16EK5Qz"));
+
+            Console.WriteLine(api.GetAudioFeaturesForSeveralTracks(trackids));
 
             Console.ReadLine();
 
