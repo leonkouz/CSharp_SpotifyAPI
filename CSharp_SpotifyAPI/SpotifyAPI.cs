@@ -307,6 +307,20 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get a detailed audio analysis for a single track identified by its unique Spotify ID. Note: This can take some time depending on the song and internet connection.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the track.</param>
+        /// <returns></returns>
+        public dynamic GetAudioAnalysisForTrack(string id)
+        {
+            string endpointUrl = "audio-analysis/" + id;
+
+            Console.WriteLine("Downloading Audio Analysis for: " + id);
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
 
         #endregion
     }
