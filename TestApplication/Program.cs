@@ -47,7 +47,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetArtistsTopTracks("6Zq5ky484xYTgxE6dQ8yHh", Market.AD));
 
-            Console.WriteLine(api.GetArtistsRelatedArtists("34W7ZCX0LZeJd8q6boKGOk"));
+            //Console.WriteLine(api.GetArtistsRelatedArtists("34W7ZCX0LZeJd8q6boKGOk"));
+
+            Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
             Console.ReadLine();
 

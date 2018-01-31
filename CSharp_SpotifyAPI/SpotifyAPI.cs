@@ -224,5 +224,36 @@ namespace CSharp_SpotifyAPI
         }
 
         #endregion
+
+        #region Track
+
+        /// <summary>
+        /// Get Spotify catalog information for a single track identified by its unique Spotify ID.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the track.</param>
+        /// <returns></returns>
+        public dynamic GetTrack(string id)
+        {
+            string endpointUrl = "tracks/" + id;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get Spotify catalog information for a single track identified by its unique Spotify ID.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the track.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetTrack(string id, Market market)
+        {
+            string endpointUrl = "tracks/" + id + "?market=" + market;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+
+
+        #endregion
     }
 }
