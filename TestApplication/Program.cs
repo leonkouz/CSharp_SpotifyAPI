@@ -71,7 +71,12 @@ namespace TestApplication
 
             Console.WriteLine(api.Search("roadhouse%20OR%20blues", searchTypes, Market.AD, 20, 0));*/
 
-            Console.WriteLine(api.GetUsersPlaylists("BLc8R4O8R9qrV2ITacGIaA", 20, 0));
+            //Console.WriteLine(api.GetUsersPlaylists("BLc8R4O8R9qrV2ITacGIaA", 20, 0));
+
+            Console.WriteLine(api.GetCurrentUsersPlaylists(10, 0));
+
+
+
 
             Console.ReadLine();
 
