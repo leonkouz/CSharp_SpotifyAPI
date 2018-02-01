@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.UserLibraryRead, Scope.PlaylistReadPrivate
+                Scope.PlaylistModifyPublic, Scope.PlaylistModifyPrivate
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -77,7 +77,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetPlaylist("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.AD, "description,uri"));
 
-            Console.WriteLine(api.GetPlaylistsTracks("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.EC, "total", 20, 0));
+            //Console.WriteLine(api.GetPlaylistsTracks("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.EC, "total", 20, 0));
+
+            Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
 
 

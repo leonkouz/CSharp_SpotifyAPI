@@ -49,18 +49,40 @@ namespace CSharp_SpotifyAPI
             httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
             httpWebRequest.ContentType = "application/json";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            try
             {
-                streamWriter.Write(body);
-                streamWriter.Flush();
-                streamWriter.Close();
-
-                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
                 {
-                    var result = streamReader.ReadToEnd();
-                    return result;
+                    streamWriter.Write(body);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        return result;
+                    }
                 }
+            }
+            catch(WebException wex)
+            {
+                string errorJson;
+
+                using (var errorResponse = (HttpWebResponse)wex.Response)
+                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                {
+                    errorJson = reader.ReadToEnd();
+                };
+
+                //string gymnastics to get error message
+                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                string deserialisedJson = deserialisedResponse.ToString();
+                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
+                string errorMessage = splitJson[1].Split('\r')[0];
+
+                throw new Exception(errorMessage);
             }
         }
 

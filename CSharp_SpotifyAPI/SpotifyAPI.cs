@@ -550,6 +550,26 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Create a playlist for a Spotify user. (The playlist will be empty until you add tracks.)
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="description">Value for playlist description as displayed in Spotify Clients and in the Web API.</param>
+        /// <param name="Public">Default true. If true the playlist will be public, if false it will be private. To be able to create private playlists, the user must have granted the playlist-modify-private scope.</param>
+        /// <param name="name">The name for the new playlist, for example "Your Coolest Playlist". This name does not need to be unique; a user may have several playlists with the same name.</param>
+        /// <param name="collaborative">Default false. If true the playlist will be collaborative. Note that to create a collaborative playlist you must also set public to false. To create collaborative playlists you must have granted playlist-modify-private and playlist-modify-public scopes.</param>
+        /// <returns></returns>
+        public dynamic CreatePlaylist(string userId, string description, bool Public, string name, bool collaborative)
+        {
+            string endpointUrl = "users/" + userId + "/playlists";
+
+            string publicBool = Public.ToString();
+            string collaborativeBool = collaborative.ToString();
+
+            string jsonData = String.Format("{{\"description\":\"{0}\",\"public\":{1},\"name\":\"{2}\",\"collaborative\":{3}}}", description, publicBool.ToLower(), name, collaborativeBool.ToLower());
+
+            return HttpMethods.SendPostRequest(endpointUrl, jsonData);
+        }
 
         #endregion
     }
