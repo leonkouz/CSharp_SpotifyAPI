@@ -64,7 +64,6 @@ namespace CSharp_SpotifyAPI
             }
         }
 
-
         /// <summary>
         /// Sends a HTTP Get method
         /// <param name="url">The URL the request is sent to</param>
@@ -180,5 +179,16 @@ namespace CSharp_SpotifyAPI
 
             return json;
         }
+
+        public static dynamic SendPostRequest(string endpointUrl, string jsonData)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpPostWithAuthHeader(url, Constants.AuthCode, jsonData);
+
+            return json;
+
+        }
+
     }
 }
