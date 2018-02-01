@@ -417,6 +417,62 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <returns></returns>
+        public dynamic GetPlaylist(string userId, string playlistId)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetPlaylist(string userId, string playlistId, Market market)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?market=" + market;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="fields">Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. If the requested field is invalid, an empty string will be returned</param>
+        /// <returns></returns>
+        public dynamic GetPlaylist(string userId, string playlistId, string fields)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?fields=" + fields;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="fields">Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. If the requested field is invalid, an empty string will be returned</param>
+        /// <returns></returns>
+        public dynamic GetPlaylist(string userId, string playlistId, Market market, string fields)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?market=" + market + "&fields=" + fields;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
         #endregion
     }
 }
