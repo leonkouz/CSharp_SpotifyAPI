@@ -75,7 +75,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetCurrentUsersPlaylists(10, 0));
 
-            Console.WriteLine(api.GetPlaylist("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.AD, "description,uri"));
+            //Console.WriteLine(api.GetPlaylist("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.AD, "description,uri"));
+
+            Console.WriteLine(api.GetPlaylistsTracks("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.EC, "total", 20, 0));
 
 
 

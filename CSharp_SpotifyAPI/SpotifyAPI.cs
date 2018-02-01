@@ -473,6 +473,84 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.DownloadData(endpointUrl);
         }
 
+        /// <summary>
+        /// Get full details of the tracks of a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <returns></returns>
+        public dynamic GetPlaylistsTracks(string userId, string playlistId)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get full details of the tracks of a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="limit">The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.</param>
+        /// <param name="offset">The index of the first track to return. Default: 0 (the first object).</param>
+        /// <returns></returns>
+        public dynamic GetPlaylistsTracks(string userId, string playlistId, int limit, int offset)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get full details of the tracks of a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.</param>
+        /// <param name="offset">The index of the first track to return. Default: 0 (the first object).</param>
+        /// <returns></returns>
+        public dynamic GetPlaylistsTracks(string userId, string playlistId, Market market, int limit, int offset)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?market=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get full details of the tracks of a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="fields">Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. If the fields requested are invalid, an empty string will be returned</param>
+        /// <param name="limit">The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.</param>
+        /// <param name="offset">The index of the first track to return. Default: 0 (the first object).</param>
+        /// <returns></returns>
+        public dynamic GetPlaylistsTracks(string userId, string playlistId, string fields, int limit, int offset)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?fields=" + fields + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get full details of the tracks of a playlist owned by a Spotify user.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="fields">Filters for the query: a comma-separated list of the fields to return. If omitted, all fields are returned. If the fields requested are invalid, an empty string will be returned</param>
+        /// <param name="limit">The maximum number of tracks to return. Default: 100. Minimum: 1. Maximum: 100.</param>
+        /// <param name="offset">The index of the first track to return. Default: 0 (the first object).</param>
+        /// <returns></returns>
+        public dynamic GetPlaylistsTracks(string userId, string playlistId, Market market, string fields, int limit, int offset)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?market=" + market + "&fields=" + fields + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.DownloadData(endpointUrl);
+        }
+
+
         #endregion
     }
 }
