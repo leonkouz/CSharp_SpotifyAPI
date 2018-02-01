@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharp_SpotifyAPI.Enums;
+using System.Web;
 
 namespace CSharp_SpotifyAPI
 {
@@ -570,6 +571,22 @@ namespace CSharp_SpotifyAPI
 
             return HttpMethods.SendPostRequest(endpointUrl, jsonData);
         }
+
+        public dynamic AddTrackToPlaylist(string userId, string playlistId, string trackId)
+        {
+            string trackIdUri = "spotify:track:" + trackId;
+            string trackIdUriEncoded = HttpUtility.UrlEncode(trackIdUri);
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?uris=" + trackIdUriEncoded;
+
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
+
+        public dynamic AddTrackToPlaylist(string userId, string playlistId, ICollection<string> trackId)
+        {
+
+        }
+
 
         #endregion
     }

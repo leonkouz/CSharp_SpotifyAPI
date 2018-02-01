@@ -71,18 +71,15 @@ namespace TestApplication
 
             Console.WriteLine(api.Search("roadhouse%20OR%20blues", searchTypes, Market.AD, 20, 0));*/
 
-            //Console.WriteLine(api.GetUsersPlaylists("BLc8R4O8R9qrV2ITacGIaA", 20, 0));
+            //Console.WriteLine(api.GetUsersPlaylists("tezzbian", 20, 0));
 
             //Console.WriteLine(api.GetCurrentUsersPlaylists(10, 0));
 
             //Console.WriteLine(api.GetPlaylist("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.AD, "description,uri"));
 
-            //Console.WriteLine(api.GetPlaylistsTracks("leonkouz", "5WzFmpYAKQ8frPXw5yIJtz", Market.EC, "total", 20, 0));
+            //Console.WriteLine(api.GetPlaylistsTracks("leonkouz", "5kIg55zaJKaFKgqrwOKffb", 20, 0));
 
-            Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
-
-
-
+            //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
             Console.ReadLine();
 
