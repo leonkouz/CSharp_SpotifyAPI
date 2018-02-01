@@ -34,7 +34,7 @@ namespace CSharp_SpotifyAPI
 
 
         /// <summary>
-        /// Sends a HTTP POST method with an authorisation header
+        /// Sends a HTTP POST method with an authorisation header and body
         /// </summary>
         /// <param name="url">The URL the request is sent to </param>
         /// <param name="AuthCode">Autorisation Code</param>
@@ -63,6 +63,51 @@ namespace CSharp_SpotifyAPI
                         var result = streamReader.ReadToEnd();
                         return result;
                     }
+                }
+            }
+            catch(WebException wex)
+            {
+                string errorJson;
+
+                using (var errorResponse = (HttpWebResponse)wex.Response)
+                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                {
+                    errorJson = reader.ReadToEnd();
+                };
+
+                //string gymnastics to get error message
+                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                string deserialisedJson = deserialisedResponse.ToString();
+                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
+                string errorMessage = splitJson[1].Split('\r')[0];
+
+                throw new Exception(errorMessage);
+            }
+        }
+
+        /// <summary>
+        /// Sends a HTTP POST method with an authorisation header
+        /// </summary>
+        /// <param name="url">The URL the request is sent to </param>
+        /// <param name="AuthCode">Autorisation Code</param>
+        /// <returns></returns>
+        public static string HttpPostWithAuthHeader(string url, string AuthCode)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            httpWebRequest.Method = "POST";
+
+            httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
+            httpWebRequest.ContentType = "application/json";
+
+            try
+            {
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    return result;
                 }
             }
             catch(WebException wex)
@@ -211,6 +256,8 @@ namespace CSharp_SpotifyAPI
             return json;
 
         }
+
+        
 
     }
 }
