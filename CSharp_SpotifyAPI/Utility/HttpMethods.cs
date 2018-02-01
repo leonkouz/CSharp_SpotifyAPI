@@ -254,10 +254,17 @@ namespace CSharp_SpotifyAPI
             var json = HttpPostWithAuthHeader(url, Constants.AuthCode, jsonData);
 
             return json;
-
         }
 
-        
+        public static dynamic SendPostRequest(string endpointUrl)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpPostWithAuthHeader(url, Constants.AuthCode);
+
+            return json;
+        }
+
 
     }
 }
