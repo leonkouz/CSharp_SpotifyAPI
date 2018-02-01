@@ -24,12 +24,46 @@ namespace CSharp_SpotifyAPI
         {
             var content = new FormUrlEncodedContent(values);
 
+
             var response = await client.PostAsync(url, content);
 
             var responseString = await response.Content.ReadAsStringAsync();
 
             return responseString;
         }
+
+
+        /// <summary>
+        /// Sends a HTTP POST method with an authorisation header
+        /// </summary>
+        /// <param name="url">The URL the request is sent to </param>
+        /// <param name="AuthCode">Autorisation Code</param>
+        /// <param name="body">The JSON string to include in the body of the POST request</param>
+        /// <returns></returns>
+        public static string HttpPostWithAuthHeader(string url, string AuthCode, string body)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            httpWebRequest.Method = "POST";
+
+            httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
+            httpWebRequest.ContentType = "application/json";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(body);
+                streamWriter.Flush();
+                streamWriter.Close();
+
+                var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    return result;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Sends a HTTP Get method
