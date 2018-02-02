@@ -53,7 +53,7 @@ namespace TestApplication
 
             List<string> trackids = new List<string>()
             {
-                "6k923yI8gcLPVBxrS2cgt9", "1IX4ofWh6rl55dERwwn6Ue"
+                "02a2RQEICEzbdPPYh0aLnJ", "1IX4ofWh6rl55dERwwn6Ue"
             };
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
@@ -82,6 +82,8 @@ namespace TestApplication
             //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
             Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids, 2));
+
+            Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "02a2RQEICEzbdPPYh0aLnJ"));
 
             Console.ReadLine();
 

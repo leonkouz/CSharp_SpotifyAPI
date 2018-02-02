@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSharp_SpotifyAPI.Enums;
+using Newtonsoft.Json;
 using System.Web;
+using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace CSharp_SpotifyAPI
 {
@@ -640,6 +643,55 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Remove a track or multiple tracks 
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="json">Custom string of JSON. See Spotify's API website for more information </param>
+        /// <returns></returns>
+        public dynamic RemoveTrackFromPlaylist(string userId, string playlistId, dynamic json)
+        {
+            throw new NotImplementedException();
+
+            /*JObject json =
+                new JObject(
+                    new JProperty("tracks",
+                    new JArray(
+                        new JObject(
+                            new JProperty("positions", new JArray(position)),
+                            new JProperty("uri", trackUri)
+                            ))));*/
+        }
+
+        /// <summary>
+        /// Remove all occurences of a specific track or multiple tracks from a playlist
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="playlistId"></param>
+        /// <returns></returns>
+        public dynamic RemoveTrackFromPlaylist(string userId, string playlistId, string trackId)
+        {
+            string trackUri = "spotify:track:" + trackId;
+
+            JObject json =
+                new JObject(
+                    new JProperty("tracks",
+                    new JArray(
+                        new JObject(
+                            new JProperty("uri", trackUri)
+                            ))));
+
+            string jsonString = json.ToString();
+
+            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
+            string serialisedJson = JsonConvert.SerializeObject(jsonString);
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+            return HttpMethods.SendPostRequest(endpointUrl, serialisedJson);
+        }
 
         #endregion
     }
