@@ -572,21 +572,72 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl, jsonData);
         }
 
+        /// <summary>
+        /// Add one or more tracks to a user’s playlist.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIds">Spotify Track ID to add</param>
+        /// <returns></returns>
         public dynamic AddTrackToPlaylist(string userId, string playlistId, string trackId)
         {
-            string trackIdUri = "spotify:track:" + trackId;
-            string trackIdUriEncoded = HttpUtility.UrlEncode(trackIdUri);
+            string trackUri = StringUtil.CreateSpotifyURI(trackId);
 
-            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?uris=" + trackIdUriEncoded;
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?uris=" + trackUri;
 
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
-        public dynamic AddTrackToPlaylist(string userId, string playlistId, ICollection<string> trackId)
+        /// <summary>
+        /// Add one or more tracks to a user’s playlist.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIds">List of Spotify track URIs to add.</param>
+        /// <returns></returns>
+        public dynamic AddTrackToPlaylist(string userId, string playlistId, ICollection<string> trackIds)
         {
-            
+            string trackUris = StringUtil.CreateSpotifyURI(trackIds);
 
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?uris=" + trackUris;
 
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Add one or more tracks to a user’s playlist.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIds">Spotify Track ID to add</param>
+        /// <param name="position">The position to insert the tracks, a zero-based index. For example, to insert the tracks in the first position: position=0; to insert the tracks in the third position: position=2. If omitted, the tracks will be appended to the playlist. 
+        /// Tracks are added in the order they appear in the uris array.</param>
+        /// <returns></returns>
+        public dynamic AddTrackToPlaylist(string userId, string playlistId, string trackId, int position)
+        {
+            string trackUri = StringUtil.CreateSpotifyURI(trackId);
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?position=" + position + "&uris=" + trackUri;
+
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Add one or more tracks to a user’s playlist.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIds">List of Spotify track URIs to add.</param>
+        /// <param name="position">The position to insert the tracks, a zero-based index. For example, to insert the tracks in the first position: position=0; to insert the tracks in the third position: position=2. If omitted, the tracks will be appended to the playlist. 
+        /// Tracks are added in the order they appear in the uris array.</param>
+        /// <returns></returns>
+        public dynamic AddTrackToPlaylist(string userId, string playlistId, ICollection<string> trackIds, int position)
+        {
+            string trackUris = StringUtil.CreateSpotifyURI(trackIds);
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?position=" + position + "&uris=" + trackUris;
+
+            return HttpMethods.SendPostRequest(endpointUrl);
         }
 
 

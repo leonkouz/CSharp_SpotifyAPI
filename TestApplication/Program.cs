@@ -51,10 +51,10 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
-            /*List<string> trackids = new List<string>()
+            List<string> trackids = new List<string>()
             {
-                "4r1zlgDyILnZq9fEaSwFGd", "184r9uzj1Coildl16EK5Qz"
-            };*/
+                "6k923yI8gcLPVBxrS2cgt9", "1IX4ofWh6rl55dERwwn6Ue"
+            };
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
 
@@ -81,7 +81,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
-            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0zQS1z9jTvEgt0qwKQiLyk"));
+            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids, 2));
 
             Console.ReadLine();
 

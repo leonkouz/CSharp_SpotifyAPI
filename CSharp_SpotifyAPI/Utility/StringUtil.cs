@@ -64,7 +64,7 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="ids">List of Spofity Track IDs</param>
         /// <returns></returns>
-        public static string CreateSpotfiyURI(ICollection<string> ids)
+        public static string CreateSpotifyURI(ICollection<string> ids)
         {
             List<string> uris = new List<string>();
             foreach(string str in ids)
