@@ -81,6 +81,8 @@ namespace TestApplication
 
             //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
+            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0zQS1z9jTvEgt0qwKQiLyk"));
+
             Console.ReadLine();
 
         }

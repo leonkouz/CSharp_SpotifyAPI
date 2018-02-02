@@ -247,6 +247,12 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Summary sends a POST request to the spotify API with a body
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <param name="jsonData">The body of the POST request</param>
+        /// <returns></returns>
         public static dynamic SendPostRequest(string endpointUrl, string jsonData)
         {
             string url = Constants.baseUrl + endpointUrl;
@@ -256,6 +262,11 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Summary sends a POST request to the spotify API
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <returns></returns>
         public static dynamic SendPostRequest(string endpointUrl)
         {
             string url = Constants.baseUrl + endpointUrl;

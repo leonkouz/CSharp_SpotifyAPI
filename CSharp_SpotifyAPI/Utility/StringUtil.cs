@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace CSharp_SpotifyAPI
 {
@@ -42,6 +43,38 @@ namespace CSharp_SpotifyAPI
             scopeContents = scopeContents.Remove(scopeContents.Length - 1);
 
             return scopeContents;
+        }
+
+        /// <summary>
+        /// Creates a HTTP encoded Spotify Track URI from the Spotify Track ID
+        /// </summary>
+        /// <param name="id">Sptofiy Track ID</param>
+        /// <returns></returns>
+        public static string CreateSpotifyURI(string id)
+        {
+            string trackIdUri = "spotify:track:" + id;
+
+            string trackIdUriEncoded = HttpUtility.UrlEncode(trackIdUri);
+
+            return trackIdUriEncoded;
+        }
+
+        /// <summary>
+        /// Creates a aggregated string of HTTP encoded Spotify Track URIs from the Spotify Track IDs
+        /// </summary>
+        /// <param name="ids">List of Spofity Track IDs</param>
+        /// <returns></returns>
+        public static string CreateSpotfiyURI(ICollection<string> ids)
+        {
+            List<string> uris = new List<string>();
+            foreach(string str in ids)
+            {
+                string uri = "spotify:track:" + str;
+                uris.Add(uri);
+            }
+
+            string trackUris = uris.Aggregate((i, j) => i + ',' + j);
+            return trackUris;
         }
 
     }

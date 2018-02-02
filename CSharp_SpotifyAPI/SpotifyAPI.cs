@@ -584,7 +584,9 @@ namespace CSharp_SpotifyAPI
 
         public dynamic AddTrackToPlaylist(string userId, string playlistId, ICollection<string> trackId)
         {
-            throw new NotImplementedException();
+            
+
+
         }
 
 
