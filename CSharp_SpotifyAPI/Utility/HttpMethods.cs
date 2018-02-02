@@ -86,6 +86,52 @@ namespace CSharp_SpotifyAPI
             }
         }
 
+        public static string HttpDeleteWithAuthHeader(string url, string AuthCode, string body)
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+
+            httpWebRequest.Method = "DELETE";
+
+            httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
+            httpWebRequest.ContentType = "application/json";
+
+            try
+            {
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                {
+                    streamWriter.Write(body);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+
+                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+                    {
+                        var result = streamReader.ReadToEnd();
+                        return result;
+                    }
+                }
+            }
+            catch (WebException wex)
+            {
+                string errorJson;
+
+                using (var errorResponse = (HttpWebResponse)wex.Response)
+                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                {
+                    errorJson = reader.ReadToEnd();
+                };
+
+                //string gymnastics to get error message
+                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                string deserialisedJson = deserialisedResponse.ToString();
+                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
+                string errorMessage = splitJson[1].Split('\r')[0];
+
+                throw new Exception(errorMessage);
+            }
+        }
+
         /// <summary>
         /// Sends a HTTP POST method with an authorisation header
         /// </summary>
@@ -248,7 +294,7 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Summary sends a POST request to the spotify API with a body
+        /// Sends a POST request to the spotify API with a body
         /// </summary>
         /// <param name="endpointUrl">The Spotify API endpoint url</param>
         /// <param name="jsonData">The body of the POST request</param>
@@ -263,7 +309,7 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Summary sends a POST request to the spotify API
+        /// Sends a POST request to the spotify API
         /// </summary>
         /// <param name="endpointUrl">The Spotify API endpoint url</param>
         /// <returns></returns>
@@ -276,6 +322,20 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Sends a DELETE request to the Spotify API
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <param name="body">The body of the POST request</param>
+        /// <returns></returns>
+        public static dynamic SendDeleteRequest(string endpointUrl, string body)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpDeleteWithAuthHeader(url, Constants.AuthCode, body);
+
+            return json;
+        }
 
     }
 }

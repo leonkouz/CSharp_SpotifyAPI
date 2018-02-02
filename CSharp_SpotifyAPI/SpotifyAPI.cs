@@ -643,18 +643,7 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
-        /// <summary>
-        /// Remove a track or multiple tracks 
-        /// </summary>
-        /// <param name="userId">The user's Spotify user ID.</param>
-        /// <param name="playlistId">The Spotify ID for the playlist.</param>
-        /// <param name="json">Custom string of JSON. See Spotify's API website for more information </param>
-        /// <returns></returns>
-        public dynamic RemoveTrackFromPlaylist(string userId, string playlistId, dynamic json)
-        {
-            throw new NotImplementedException();
-
-            /*JObject json =
+             /*JObject json =
                 new JObject(
                     new JProperty("tracks",
                     new JArray(
@@ -662,7 +651,7 @@ namespace CSharp_SpotifyAPI
                             new JProperty("positions", new JArray(position)),
                             new JProperty("uri", trackUri)
                             ))));*/
-        }
+        
 
         /// <summary>
         /// Remove all occurences of a specific track or multiple tracks from a playlist
@@ -686,11 +675,9 @@ namespace CSharp_SpotifyAPI
 
             jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
 
-            string serialisedJson = JsonConvert.SerializeObject(jsonString);
-
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
-            return HttpMethods.SendPostRequest(endpointUrl, serialisedJson);
+            return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
         }
 
         #endregion
