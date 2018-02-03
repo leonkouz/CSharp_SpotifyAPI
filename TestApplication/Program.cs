@@ -71,7 +71,7 @@ namespace TestApplication
 
             Console.WriteLine(api.Search("roadhouse%20OR%20blues", searchTypes, Market.AD, 20, 0));*/
 
-            //Console.WriteLine(api.GetUsersPlaylists("tezzbian", 20, 0));
+            //Console.WriteLine(api.GetUsersPlaylists("beanzu", 20, 0));
 
             //Console.WriteLine(api.GetCurrentUsersPlaylists(10, 0));
 
@@ -83,7 +83,16 @@ namespace TestApplication
 
             Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids, 2));
 
-            Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "02a2RQEICEzbdPPYh0aLnJ"));
+            //Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0pf9ik9MHYZnxEgDw3NYp0"));
+
+            Dictionary<string, int> trackIds = new Dictionary<string, int>()
+            {
+                {"02a2RQEICEzbdPPYh0aLnJ", 2 },
+                { "0pf9ik9MHYZnxEgDw3NYp0", 3}
+            };
+
+
+            Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds));
 
             Console.ReadLine();
 

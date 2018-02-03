@@ -643,21 +643,22 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
-             /*JObject json =
-                new JObject(
-                    new JProperty("tracks",
-                    new JArray(
-                        new JObject(
-                            new JProperty("positions", new JArray(position)),
-                            new JProperty("uri", trackUri)
-                            ))));*/
-        
+        /*JObject json =
+           new JObject(
+               new JProperty("tracks",
+               new JArray(
+                   new JObject(
+                       new JProperty("positions", new JArray(position)),
+                       new JProperty("uri", trackUri)
+                       ))));*/
+
 
         /// <summary>
-        /// Remove all occurences of a specific track or multiple tracks from a playlist
+        /// Remove all occurences of specific track from a playlist
         /// </summary>
-        /// <param name="userId"></param>
-        /// <param name="playlistId"></param>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackId">Spotify track ID</param>
         /// <returns></returns>
         public dynamic RemoveTrackFromPlaylist(string userId, string playlistId, string trackId)
         {
@@ -679,6 +680,128 @@ namespace CSharp_SpotifyAPI
 
             return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
         }
+
+        /// <summary>
+        /// Remove a specific track from a specific position in a playlist
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackId">Spotify track ID</param>
+        /// <param name="position">Position to remove the track from</param>
+        /// <returns></returns>
+        public dynamic RemoveTrackFromPlaylist(string userId, string playlistId, string trackId, int position)
+        {
+            string trackUri = "spotify:track:" + trackId;
+
+            JObject json =
+           new JObject(
+               new JProperty("tracks",
+               new JArray(
+                   new JObject(
+                       new JProperty("positions", new JArray(position)),
+                       new JProperty("uri", trackUri)
+                       ))));
+
+            string jsonString = json.ToString();
+
+            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+            return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
+        }
+
+        /// <summary>
+        /// Remove all occurences of multiple tracks from a playlist
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIds">Collection of Spotify Track IDs</param>
+        /// <returns></returns>
+        public dynamic RemoveTracksFromPlaylist(string userId, string playlistId, ICollection<string> trackIds)
+        {
+            List<string> trackUris = new List<string>();
+
+            foreach (string str in trackIds)
+            {
+                string uri = "spotify:track:" + str;
+                trackUris.Add(uri);
+            }
+
+            JObject json =
+                new JObject(
+                    new JProperty("tracks",
+                    new JArray(
+                         new JObject(
+                            new JProperty("uri", trackUris[0])
+                            ))));
+
+
+            //Remove the first element since we already added it in the json
+            trackUris[0].Remove(0);
+
+            foreach (string str in trackUris)
+            {
+                json["tracks"].First().AddAfterSelf(new JObject(new JProperty("uri", str)));
+            }
+
+            string jsonString = json.ToString();
+
+            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+            return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
+        }
+
+        /// <summary>
+        /// Remove all occurences of multiple tracks from a playlist
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="trackIdAndPosition">Dictionary of the track to remove and the specific position to remove it from</param>
+        /// <returns></returns>
+        public dynamic RemoveTracksFromPlaylist(string userId, string playlistId, Dictionary<string, int> trackIdAndPosition)
+        {
+            List<string> trackUris = new List<string>();
+            List<int> positions = new List<int>();
+
+            foreach(var value in trackIdAndPosition)
+            {
+                string uri = "spotify:track:" + value.Key;
+                trackUris.Add(uri);
+                positions.Add(value.Value);
+            }
+
+            JObject json =
+                new JObject(
+                    new JProperty("tracks",
+                    new JArray(
+                         new JObject(
+                            new JProperty("positions", new JArray(positions[0])),
+                            new JProperty("uri", trackUris[0])
+                            ))));
+
+            trackUris[0].Remove(0);
+            positions.RemoveAll(item => item == 1);
+
+            int index = 0;
+            foreach (string str in trackUris)
+            {
+                json["tracks"].First().AddAfterSelf(new JObject(new JProperty("positions", new JArray(positions[index])), new JProperty("uri", str)));
+                index++;
+            }
+
+            string jsonString = json.ToString();
+
+            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+            return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
+        }
+
+
 
         #endregion
     }
