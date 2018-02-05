@@ -32,7 +32,6 @@ namespace CSharp_SpotifyAPI
             return responseString;
         }
 
-
         /// <summary>
         /// Sends a HTTP POST method with an authorisation header and body
         /// </summary>
@@ -287,6 +286,15 @@ namespace CSharp_SpotifyAPI
             string url = Constants.baseUrl + endpointUrl;
 
             var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.DELETE, body);
+
+            return json;
+        }
+
+        public static dynamic SendPutRequest(string endpointUrl, string body)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.PUT, body);
 
             return json;
         }
