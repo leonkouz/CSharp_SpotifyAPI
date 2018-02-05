@@ -806,6 +806,38 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
+        /// <summary>
+        /// Change a playlist’s name and public/private state. (The user must, of course, own the playlist.). Use null if you do not wish to change a specific parameter. E.g. ChangePlaylistDetails(id, playlistId, "New Playlist Name", null, "new description"). Note: User Id and Playlist ID cannot be null
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="name">The new name for the playlist, for example "My New Playlist Title".</param>
+        /// <param name="Public">If true the playlist will be public, if false it will be private.</param>
+        /// <param name="collaborative">f true, the playlist will become collaborative and other users will be able to modify the playlist in their Spotify client. Note: You can only set collaborative to true on non-public playlists.</param>
+        /// <param name="description">Value for playlist description as displayed in Spotify Clients and in the Web API.</param>
+        /// <returns></returns>
+        public dynamic ChangePlaylistDetails(string userId, string playlistId, string name, bool? Public, bool? collaborative, string description)
+        {
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId;
+
+            JObject json = new JObject();
+
+            if(name != null)
+                json.Add(new JProperty("name", name));
+            if(Public != null)
+                json.Add(new JProperty("public", Public));
+            if (collaborative != null)
+                json.Add(new JProperty("collaborative", collaborative));
+            if (description != null)
+                json.Add(new JProperty("description", description));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            HttpMethods.SendPutRequest(endpointUrl, jsonString);
+
+            return "Playlist details changed successfully"; //return this as the api does return any data from this endpoint
+        }
+
         #endregion
     }
 }

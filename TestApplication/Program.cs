@@ -92,7 +92,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds, "y43RmddChW8L88cIjgqDdbTIdYl9bsb8i6u9JzO91F8wM3lUMCFsF2LIqLoQui4A"));
 
-            Console.WriteLine(api.ReorderPlaylistTracks("leonkouz", "1npLUC4yTNWePi0qGwbWN8", 0, 2, 3));
+            //Console.WriteLine(api.ReorderPlaylistTracks("leonkouz", "1npLUC4yTNWePi0qGwbWN8", 0, 2, 3));
+
+            Console.WriteLine(api.ChangePlaylistDetails("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "new name", null, null, null));
 
             Console.ReadLine();
 
