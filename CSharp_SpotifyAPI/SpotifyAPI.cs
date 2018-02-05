@@ -977,15 +977,36 @@ namespace CSharp_SpotifyAPI
             return "Tracks saved successfully"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Remove one or more tracks from the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="id">The Spotify Track ID</param>
+        /// <returns></returns>
         public dynamic RemoveTracksForCurrentUser(string id)
         {
             string endpointUrl = "me/tracks?ids=" + id;
 
-            return HttpMethods.SendDeleteRequest()
+            HttpMethods.SendDeleteRequest(endpointUrl);
 
-
-
+            return "Tracks removed successfully"; //Added as the endpoint does not return a message
         }
+
+        /// <summary>
+        /// Remove one or more tracks from the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="ids">List of Spotify Track IDs. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic RemoveTracksForCurrentUser(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/tracks?ids=" + trackIds;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Tracks removed successfully"; //Added as the endpoint does not return a message
+        }
+
 
 
         #endregion
