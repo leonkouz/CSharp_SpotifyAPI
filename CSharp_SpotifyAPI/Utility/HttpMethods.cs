@@ -191,6 +191,20 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
+        /// Sends a DELETE request to the Spotify API
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <returns></returns>
+        public static dynamic SendDeleteRequest(string endpointUrl)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.DELETE);
+
+            return json;
+        }
+
+        /// <summary>
         /// Sends a PUT request to the Spotify API
         /// </summary>
         /// <param name="endpointUrl">The Spotify API endpoint url</param>

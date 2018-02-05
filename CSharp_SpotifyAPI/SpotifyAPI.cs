@@ -642,7 +642,7 @@ namespace CSharp_SpotifyAPI
 
             return HttpMethods.SendPostRequest(endpointUrl);
         }
-    
+
         /// <summary>
         /// Remove all occurences of specific track from a playlist
         /// </summary>
@@ -751,7 +751,7 @@ namespace CSharp_SpotifyAPI
             List<string> trackUris = new List<string>();
             List<int> positions = new List<int>();
 
-            foreach(var value in trackIdAndPosition)
+            foreach (var value in trackIdAndPosition)
             {
                 string uri = "spotify:track:" + value.Key;
                 trackUris.Add(uri);
@@ -822,9 +822,9 @@ namespace CSharp_SpotifyAPI
 
             JObject json = new JObject();
 
-            if(name != null)
+            if (name != null)
                 json.Add(new JProperty("name", name));
-            if(Public != null)
+            if (Public != null)
                 json.Add(new JProperty("public", Public));
             if (collaborative != null)
                 json.Add(new JProperty("collaborative", collaborative));
@@ -975,6 +975,16 @@ namespace CSharp_SpotifyAPI
             HttpMethods.SendPutRequest(endpointUrl);
 
             return "Tracks saved successfully"; //Added as the endpoint does not return a message
+        }
+
+        public dynamic RemoveTracksForCurrentUser(string id)
+        {
+            string endpointUrl = "me/tracks?ids=" + id;
+
+            return HttpMethods.SendDeleteRequest()
+
+
+
         }
 
 
