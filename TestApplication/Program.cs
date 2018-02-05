@@ -81,7 +81,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
-            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids));
+            //Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids));
 
             //Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0pf9ik9MHYZnxEgDw3NYp0"));
 
@@ -90,8 +90,7 @@ namespace TestApplication
                 {"0pf9ik9MHYZnxEgDw3NYp0", 1 },
             };
 
-
-            Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds));
+            Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds, "y43RmddChW8L88cIjgqDdbTIdYl9bsb8i6u9JzO91F8wM3lUMCFsF2LIqLoQui4A"));
 
             Console.ReadLine();
 

@@ -750,8 +750,9 @@ namespace CSharp_SpotifyAPI
         /// <param name="userId">The user's Spotify user ID.</param>
         /// <param name="playlistId">The Spotify ID for the playlist.</param>
         /// <param name="trackIdAndPosition">Dictionary of the track to remove and the specific position to remove it from</param>
+        /// <param name="playlistSnapshot">The Spotify ID for the playlist snapshot to remove from. This is used to help avoid errors. You can retreive the id when adding to or creating playlists.</param>
         /// <returns></returns>
-        public dynamic RemoveTracksFromPlaylist(string userId, string playlistId, Dictionary<string, int> trackIdAndPosition)
+        public dynamic RemoveTracksFromPlaylist(string userId, string playlistId, Dictionary<string, int> trackIdAndPosition, string playlistSnapshot)
         {
             List<string> trackUris = new List<string>();
             List<int> positions = new List<int>();
@@ -770,7 +771,8 @@ namespace CSharp_SpotifyAPI
                          new JObject(
                             new JProperty("positions", new JArray(positions[0])),
                             new JProperty("uri", trackUris[0])
-                            ))));
+                            ))),
+                    new JProperty("snapshot_id", playlistSnapshot));
 
             var firstValue = trackIdAndPosition.First();
             trackIdAndPosition.Remove(firstValue.Key);
