@@ -104,7 +104,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.CheckCurrentUsersSavedTracks(trackids));
 
-            Console.WriteLine(api.SaveTracksForCurrentUser("1rF9smHPaFvK4oJ3FwzYjP"));
+            Console.WriteLine(api.SaveTracksForCurrentUser(trackids));
 
             Console.ReadLine();
 

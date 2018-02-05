@@ -947,12 +947,36 @@ namespace CSharp_SpotifyAPI
 
         }
 
+        /// <summary>
+        /// Save one or more tracks to the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="id">The Spotify Track ID</param>
+        /// <returns></returns>
         public dynamic SaveTracksForCurrentUser(string id)
         {
             string endpointUrl = "me/tracks?ids=" + id;
 
-            return HttpMethods.SendPutRequest(endpointUrl);
+            HttpMethods.SendPutRequest(endpointUrl);
+
+            return "Track saved successfully"; //Added as the endpoint does not return a message
         }
+
+        /// <summary>
+        /// Save one or more tracks to the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="ids">List of the Spotify Track IDs. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic SaveTracksForCurrentUser(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/tracks?ids=" + trackIds;
+
+            HttpMethods.SendPutRequest(endpointUrl);
+
+            return "Tracks saved successfully"; //Added as the endpoint does not return a message
+        }
+
 
         #endregion
 
