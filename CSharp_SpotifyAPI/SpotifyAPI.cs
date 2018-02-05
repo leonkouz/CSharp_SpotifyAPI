@@ -947,6 +947,12 @@ namespace CSharp_SpotifyAPI
 
         }
 
+        public dynamic SaveTracksForCurrentUser(string id)
+        {
+            string endpointUrl = "me/tracks?ids=" + id;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
 
         #endregion
 

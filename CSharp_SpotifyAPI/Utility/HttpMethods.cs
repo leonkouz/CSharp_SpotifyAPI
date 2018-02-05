@@ -33,10 +33,11 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Sends a HTTP POST method with an authorisation header and body
+        /// Sends a HTTP method with an authorisation header and body
         /// </summary>
         /// <param name="url">The URL the request is sent to </param>
         /// <param name="AuthCode">Autorisation Code</param>
+        /// <param name="method">Specifies the HTTP method to use</param>
         /// <param name="body">The JSON string to include in the body of the POST request</param>
         /// <returns></returns>
         private static string HttpMethodWithAuthHeader(string url, string AuthCode, HttpMethod method, string body)
@@ -86,16 +87,17 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Sends a HTTP POST method with an authorisation header
+        /// Sends a HTTP method with an authorisation header and body
         /// </summary>
         /// <param name="url">The URL the request is sent to </param>
         /// <param name="AuthCode">Autorisation Code</param>
+        /// <param name="method">Specifies the HTTP method to use</param>
         /// <returns></returns>
-        private static string HttpPostWithAuthHeader(string url, string AuthCode)
+        private static string HttpMethodWithAuthHeader(string url, string AuthCode, HttpMethod method)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            httpWebRequest.Method = "POST";
+            httpWebRequest.Method = method.ToString();
 
             httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
             httpWebRequest.ContentType = "application/json";
@@ -109,7 +111,7 @@ namespace CSharp_SpotifyAPI
                     return result;
                 }
             }
-            catch(WebException wex)
+            catch (WebException wex)
             {
                 string errorJson;
 
@@ -131,114 +133,6 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Sebds a Http Get request
-        /// </summary>
-        /// <param name="url">The url to send the request to</param>
-        /// <returns></returns>
-        private static string HttpGet(string url)
-        {
-            string json;
-
-            //Creates a GET request
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            //Sends the GET request
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                json = reader.ReadToEnd();
-            }
-
-            return json;
-        }
-
-        /// <summary>
-        /// Sends a HTTP Get method with headers
-        /// <param name="url">The URL the request is sent to</param>
-        /// </summary>
-        private static string HttpGet(string url, Dictionary<string, string> headers)
-        {
-            string json;
-
-            //Creates a GET request
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            //Add the headers to the header collection
-            foreach (var header in headers)
-            {
-                request.Headers.Add(header.Key, header.Value);
-            }
-
-            //Sends the GET request
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                json = reader.ReadToEnd();
-            }
-
-            return json;
-        }
-
-        /// <summary>
-        /// Sends a HTTP Get request with an authorisation header
-        /// </summary>
-        /// <param name="url">The URL the request is sent to </param>
-        /// <param name="AuthCode">Autorisation Code</param>
-        /// <returns></returns>
-        private static string HttpGetWithAuthHeader(string url, string AuthCode)
-        {
-            string json = null;
-            
-            //Creates a GET request
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            //Add the headers to the header collection
-            request.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
-
-            //Sends the GET request
-            try
-            {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-                using (Stream stream = response.GetResponseStream())
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    json = reader.ReadToEnd();
-                }
-            }
-            catch(WebException wex)
-            {
-                string errorJson;
-
-                using (var errorResponse = (HttpWebResponse)wex.Response)
-                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
-                {
-                    errorJson = reader.ReadToEnd();
-                };
-
-                string errorMessage = "Unknown error. Check if you have the required Scopes.";
-
-                if(errorJson != "")
-                {
-                    //string gymnastics to get error message
-                    dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
-                    string deserialisedJson = deserialisedResponse.ToString();
-                    string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
-                    var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
-                    errorMessage = splitJson[1].Split('\r')[0];
-                }
-
-                throw new Exception(errorMessage);
-            }
-
-            return json;
-        }
-
-        /// <summary>
         /// Downloads JSON from Spotify API
         /// </summary>
         /// <param name="url">The Spotify API endpoint url</param>
@@ -247,7 +141,7 @@ namespace CSharp_SpotifyAPI
         {
             string url = Constants.baseUrl + endpointUrl;
 
-            var json = HttpGetWithAuthHeader(url, Constants.AuthCode);
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.GET);
 
             return json;
         }
@@ -276,7 +170,7 @@ namespace CSharp_SpotifyAPI
         {
             string url = Constants.baseUrl + endpointUrl;
 
-            var json = HttpPostWithAuthHeader(url, Constants.AuthCode);
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.POST);
 
             return json;
         }
@@ -296,6 +190,12 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Sends a PUT request to the Spotify API
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <param name="body">The body of the POST request</param>
+        /// <returns></returns>
         public static dynamic SendPutRequest(string endpointUrl, string body)
         {
             string url = Constants.baseUrl + endpointUrl;
@@ -305,6 +205,19 @@ namespace CSharp_SpotifyAPI
             return json;
         }
 
+        /// <summary>
+        /// Sends a PUT request to the Spotify API
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <returns></returns>
+        public static dynamic SendPutRequest(string endpointUrl)
+        {
+            string url = Constants.baseUrl + endpointUrl;
+
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.PUT);
+
+            return json;
+        }
 
         private enum HttpMethod
         {

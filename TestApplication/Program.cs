@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail
+                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -102,7 +102,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetCurrentUsersSavedTracks(Market.ES, 0, 0));
 
-            Console.WriteLine(api.CheckCurrentUsersSavedTracks(trackids));
+            //Console.WriteLine(api.CheckCurrentUsersSavedTracks(trackids));
+
+            Console.WriteLine(api.SaveTracksForCurrentUser("1rF9smHPaFvK4oJ3FwzYjP"));
 
             Console.ReadLine();
 
