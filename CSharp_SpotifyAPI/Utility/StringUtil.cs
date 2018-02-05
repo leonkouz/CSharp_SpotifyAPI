@@ -80,5 +80,12 @@ namespace CSharp_SpotifyAPI
             return trackUris;
         }
 
+        public static string StringifyJson(dynamic json)
+        {
+            string jsonString = json.ToString();
+
+            return jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+        }
+
     }
 }

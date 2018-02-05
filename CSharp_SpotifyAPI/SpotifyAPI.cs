@@ -798,11 +798,13 @@ namespace CSharp_SpotifyAPI
                 new JProperty("range_length", rangeLength),
                 new JProperty("insert_before", insertBefore));
 
+            string jsonString = json.ToString();
+
+            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
-
-
-
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
         #endregion
