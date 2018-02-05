@@ -70,7 +70,10 @@ namespace CSharp_SpotifyAPI
             foreach(string str in ids)
             {
                 string uri = "spotify:track:" + str;
-                uris.Add(uri);
+
+                string encodedUri = HttpUtility.UrlEncode(uri);
+
+                uris.Add(encodedUri);
             }
 
             string trackUris = uris.Aggregate((i, j) => i + ',' + j);

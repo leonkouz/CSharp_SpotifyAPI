@@ -53,7 +53,7 @@ namespace TestApplication
 
             List<string> trackids = new List<string>()
             {
-                "02a2RQEICEzbdPPYh0aLnJ", "0pf9ik9MHYZnxEgDw3NYp0"
+                "02a2RQEICEzbdPPYh0aLnJ", "0pf9ik9MHYZnxEgDw3NYp0", "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0"
             };
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
@@ -81,14 +81,13 @@ namespace TestApplication
 
             //Console.WriteLine(api.CreatePlaylist("leonkouz", "test", false, "Name", false));
 
-            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids, 2));
+            Console.WriteLine(api.AddTrackToPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackids));
 
             //Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0pf9ik9MHYZnxEgDw3NYp0"));
 
             Dictionary<string, int> trackIds = new Dictionary<string, int>()
             {
-                {"02a2RQEICEzbdPPYh0aLnJ", 2 },
-                { "0pf9ik9MHYZnxEgDw3NYp0", 3}
+                {"0pf9ik9MHYZnxEgDw3NYp0", 1 },
             };
 
 

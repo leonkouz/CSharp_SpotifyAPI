@@ -642,17 +642,7 @@ namespace CSharp_SpotifyAPI
 
             return HttpMethods.SendPostRequest(endpointUrl);
         }
-
-        /*JObject json =
-           new JObject(
-               new JProperty("tracks",
-               new JArray(
-                   new JObject(
-                       new JProperty("positions", new JArray(position)),
-                       new JProperty("uri", trackUri)
-                       ))));*/
-
-
+    
         /// <summary>
         /// Remove all occurences of specific track from a playlist
         /// </summary>
@@ -782,8 +772,8 @@ namespace CSharp_SpotifyAPI
                             new JProperty("uri", trackUris[0])
                             ))));
 
-            trackUris[0].Remove(0);
-            positions.RemoveAll(item => item == 1);
+            var firstValue = trackIdAndPosition.First();
+            trackIdAndPosition.Remove(firstValue.Key);
 
             int index = 0;
             foreach (string str in trackUris)
