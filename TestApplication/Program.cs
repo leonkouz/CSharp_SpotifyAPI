@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.PlaylistModifyPublic, Scope.PlaylistModifyPrivate
+                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -51,10 +51,10 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
-            List<string> trackids = new List<string>()
+           /* List<string> trackids = new List<string>()
             {
                 "02a2RQEICEzbdPPYh0aLnJ", "0pf9ik9MHYZnxEgDw3NYp0", "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0"
-            };
+            };*/
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
 
@@ -96,7 +96,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.ChangePlaylistDetails("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "new name", null, null, null));
 
-            Console.WriteLine(api.GetUserProfile("leonkouz"));
+            //Console.WriteLine(api.GetUserProfile("leonkouz"));
+
+            Console.WriteLine(api.GetCurrentUserProfile());
 
             Console.ReadLine();
 

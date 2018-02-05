@@ -842,9 +842,25 @@ namespace CSharp_SpotifyAPI
 
         #region User Profiles
 
+        /// <summary>
+        /// Get public profile information about a Spotify user.
+        /// </summary>
+        /// <param name="id">The user's Spotify user ID.</param>
+        /// <returns></returns>
         public dynamic GetUserProfile(string id)
         {
             string endpointUrl = "users/" + id;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get detailed profile information about the current user (including the current user’s username).
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetCurrentUserProfile()
+        {
+            string endpointUrl = "me";
 
             return HttpMethods.SendGetRequest(endpointUrl);
         }
