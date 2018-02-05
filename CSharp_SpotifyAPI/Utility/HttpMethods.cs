@@ -40,11 +40,11 @@ namespace CSharp_SpotifyAPI
         /// <param name="AuthCode">Autorisation Code</param>
         /// <param name="body">The JSON string to include in the body of the POST request</param>
         /// <returns></returns>
-        public static string HttpPostWithAuthHeader(string url, string AuthCode, string body)
+        private static string HttpMethodWithAuthHeader(string url, string AuthCode, HttpMethod method, string body)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
-            httpWebRequest.Method = "POST";
+            httpWebRequest.Method = method.ToString();
 
             httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
             httpWebRequest.ContentType = "application/json";
@@ -66,52 +66,6 @@ namespace CSharp_SpotifyAPI
                 }
             }
             catch(WebException wex)
-            {
-                string errorJson;
-
-                using (var errorResponse = (HttpWebResponse)wex.Response)
-                using (var reader = new StreamReader(errorResponse.GetResponseStream()))
-                {
-                    errorJson = reader.ReadToEnd();
-                };
-
-                //string gymnastics to get error message
-                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
-                string deserialisedJson = deserialisedResponse.ToString();
-                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
-                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
-                string errorMessage = splitJson[1].Split('\r')[0];
-
-                throw new Exception(errorMessage);
-            }
-        }
-
-        public static string HttpDeleteWithAuthHeader(string url, string AuthCode, string body)
-        {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-
-            httpWebRequest.Method = "DELETE";
-
-            httpWebRequest.Headers.Add(HttpRequestHeader.Authorization + ": Bearer " + AuthCode);
-            httpWebRequest.ContentType = "application/json";
-
-            try
-            {
-                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-                {
-                    streamWriter.Write(body);
-                    streamWriter.Flush();
-                    streamWriter.Close();
-
-                    var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-                    {
-                        var result = streamReader.ReadToEnd();
-                        return result;
-                    }
-                }
-            }
-            catch (WebException wex)
             {
                 string errorJson;
 
@@ -303,7 +257,7 @@ namespace CSharp_SpotifyAPI
         {
             string url = Constants.baseUrl + endpointUrl;
 
-            var json = HttpPostWithAuthHeader(url, Constants.AuthCode, jsonData);
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.POST, jsonData);
 
             return json;
         }
@@ -332,10 +286,23 @@ namespace CSharp_SpotifyAPI
         {
             string url = Constants.baseUrl + endpointUrl;
 
-            var json = HttpDeleteWithAuthHeader(url, Constants.AuthCode, body);
+            var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.DELETE, body);
 
             return json;
         }
+
+
+        private enum HttpMethod
+        {
+            POST = 0,
+
+            GET = 1,
+
+            DELETE = 2,
+
+            PUT = 3,
+        }
+
 
     }
 }

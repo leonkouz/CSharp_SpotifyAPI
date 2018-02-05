@@ -85,12 +85,14 @@ namespace TestApplication
 
             //Console.WriteLine(api.RemoveTrackFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "0pf9ik9MHYZnxEgDw3NYp0"));
 
-            Dictionary<string, int> trackIds = new Dictionary<string, int>()
+            /*Dictionary<string, int> trackIds = new Dictionary<string, int>()
             {
                 {"0pf9ik9MHYZnxEgDw3NYp0", 1 },
-            };
+            };*/
 
-            Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds, "y43RmddChW8L88cIjgqDdbTIdYl9bsb8i6u9JzO91F8wM3lUMCFsF2LIqLoQui4A"));
+            //Console.WriteLine(api.RemoveTracksFromPlaylist("leonkouz", "1npLUC4yTNWePi0qGwbWN8", trackIds, "y43RmddChW8L88cIjgqDdbTIdYl9bsb8i6u9JzO91F8wM3lUMCFsF2LIqLoQui4A"));
+
+
 
             Console.ReadLine();
 

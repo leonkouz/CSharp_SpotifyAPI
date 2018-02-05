@@ -766,9 +766,7 @@ namespace CSharp_SpotifyAPI
 
             JObject json =
                 new JObject(
-                    new JProperty("tracks",
-                    new JArray(
-                         new JObject(
+                    new JProperty("tracks", new JArray(new JObject(
                             new JProperty("positions", new JArray(positions[0])),
                             new JProperty("uri", trackUris[0])
                             ))),
@@ -793,7 +791,19 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
         }
 
+        public dynamic ReorderPlaylistTracks(string userId, string playlistId, int rangeStart, int rangeLength, int insertBefore)
+        {
+            JObject json = new JObject(
+                new JProperty("range_start", rangeStart),
+                new JProperty("range_length", rangeLength),
+                new JProperty("insert_before", insertBefore));
 
+            string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
+
+
+
+
+        }
 
         #endregion
     }
