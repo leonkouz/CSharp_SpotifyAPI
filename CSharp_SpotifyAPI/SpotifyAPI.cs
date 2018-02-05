@@ -920,6 +920,34 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="id">The Spotify track ID</param>
+        /// <returns></returns>
+        public dynamic CheckCurrentUsersSavedTracks(string id)
+        {
+            string endpointUrl = "me/tracks/contains?ids=" + id;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Check if one or more tracks is already saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the tracks. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic CheckCurrentUsersSavedTracks(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/tracks/contains?ids=" + trackIds;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+
+        }
+
+
         #endregion
 
     }
