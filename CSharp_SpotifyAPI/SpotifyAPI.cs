@@ -662,9 +662,7 @@ namespace CSharp_SpotifyAPI
                             new JProperty("uri", trackUri)
                             ))));
 
-            string jsonString = json.ToString();
-
-            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            string jsonString = StringUtil.StringifyJson(json);
 
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
@@ -692,9 +690,7 @@ namespace CSharp_SpotifyAPI
                        new JProperty("uri", trackUri)
                        ))));
 
-            string jsonString = json.ToString();
-
-            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            string jsonString = StringUtil.StringifyJson(json);
 
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
@@ -735,9 +731,7 @@ namespace CSharp_SpotifyAPI
                 json["tracks"].First().AddAfterSelf(new JObject(new JProperty("uri", str)));
             }
 
-            string jsonString = json.ToString();
-
-            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            string jsonString = StringUtil.StringifyJson(json);
 
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
@@ -782,15 +776,22 @@ namespace CSharp_SpotifyAPI
                 index++;
             }
 
-            string jsonString = json.ToString();
-
-            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            string jsonString = StringUtil.StringifyJson(json);
 
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
             return HttpMethods.SendDeleteRequest(endpointUrl, jsonString);
         }
 
+        /// <summary>
+        /// Reorder a track or a group of tracks in a playlist.
+        /// </summary>
+        /// <param name="userId">The user's Spotify user ID.</param>
+        /// <param name="playlistId">The Spotify ID for the playlist.</param>
+        /// <param name="rangeStart">The position of the first track to be reordered.</param>
+        /// <param name="rangeLength">The amount of tracks to be reordered. Defaults to 1 if not set.</param>
+        /// <param name="insertBefore">The position where the tracks should be inserted. </param>
+        /// <returns></returns>
         public dynamic ReorderPlaylistTracks(string userId, string playlistId, int rangeStart, int rangeLength, int insertBefore)
         {
             JObject json = new JObject(
@@ -798,9 +799,7 @@ namespace CSharp_SpotifyAPI
                 new JProperty("range_length", rangeLength),
                 new JProperty("insert_before", insertBefore));
 
-            string jsonString = json.ToString();
-
-            jsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "").Replace(" ", "");
+            string jsonString = StringUtil.StringifyJson(json);
 
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
