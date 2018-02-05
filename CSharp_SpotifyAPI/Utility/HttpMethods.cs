@@ -91,7 +91,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="url">The URL the request is sent to </param>
         /// <param name="AuthCode">Autorisation Code</param>
         /// <returns></returns>
-        public static string HttpPostWithAuthHeader(string url, string AuthCode)
+        private static string HttpPostWithAuthHeader(string url, string AuthCode)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 
@@ -131,10 +131,11 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Sends a HTTP Get method
-        /// <param name="url">The URL the request is sent to</param>
+        /// Sebds a Http Get request
         /// </summary>
-        public static string HttpGet(string url)
+        /// <param name="url">The url to send the request to</param>
+        /// <returns></returns>
+        private static string HttpGet(string url)
         {
             string json;
 
@@ -157,7 +158,7 @@ namespace CSharp_SpotifyAPI
         /// Sends a HTTP Get method with headers
         /// <param name="url">The URL the request is sent to</param>
         /// </summary>
-        public static string HttpGet(string url, Dictionary<string, string> headers)
+        private static string HttpGet(string url, Dictionary<string, string> headers)
         {
             string json;
 
@@ -188,7 +189,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="url">The URL the request is sent to </param>
         /// <param name="AuthCode">Autorisation Code</param>
         /// <returns></returns>
-        public static string HttpGetWithAuthHeader(string url, string AuthCode)
+        private static string HttpGetWithAuthHeader(string url, string AuthCode)
         {
             string json = null;
             
@@ -237,7 +238,7 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="url">The Spotify API endpoint url</param>
         /// <returns></returns>
-        public static dynamic DownloadData(string endpointUrl)
+        public static dynamic SendGetRequest(string endpointUrl)
         {
             string url = Constants.baseUrl + endpointUrl;
 

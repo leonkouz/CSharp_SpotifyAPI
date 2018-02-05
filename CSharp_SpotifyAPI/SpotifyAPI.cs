@@ -31,7 +31,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id + "?market=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "albums/?ids=" + albumIds;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "albums/?ids=" + albumIds + "&market=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id + "/tracks?limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "albums/" + id + "/tracks?market=" + market + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         #endregion
@@ -120,7 +120,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "artists/" + id;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "artists?ids=" + artistIds;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
 
         }
 
@@ -149,7 +149,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "artists/" + id + "/albums?limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumType.GetDescription() + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -199,7 +199,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "artists/" + id + "/albums?album_type=" + albumTypeDelimited + "&market=" + market + "&limit=" + limit.ToString() + "&offset=" + offset.ToString();
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "artists/" + id + "/top-tracks?country=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "artists/" + id + "/related-artists";
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         #endregion
@@ -240,7 +240,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "tracks/" + id;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "tracks/" + id + "?market=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "tracks?ids=" + trackIds;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "tracks?ids=" + trackIds + "&market=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "audio-features/" + id;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "audio-features?ids=" + trackIds;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace CSharp_SpotifyAPI
 
             Console.WriteLine("Downloading Audio Analysis for: " + id);
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         #endregion
@@ -341,7 +341,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "search?q=" + query + "&type=" + type + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "search?q=" + query + "&type=" + searchTypesDelimited + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -376,7 +376,7 @@ namespace CSharp_SpotifyAPI
 
             string endpointUrl = "search?q=" + query + "&type=" + searchTypesDelimited + "&market=" + market + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         #endregion
@@ -394,7 +394,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + id + "/playlists?limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -405,7 +405,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "me/playlists";
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -418,7 +418,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "me/playlists?limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -431,7 +431,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -445,7 +445,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?market=" + market;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -459,7 +459,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?fields=" + fields;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -474,7 +474,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "?market=" + market + "&fields=" + fields;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks";
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -502,7 +502,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -518,7 +518,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?market=" + market + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -534,7 +534,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?fields=" + fields + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace CSharp_SpotifyAPI
         {
             string endpointUrl = "users/" + userId + "/playlists/" + playlistId + "/tracks?market=" + market + "&fields=" + fields + "&limit=" + limit + "&offset=" + offset;
 
-            return HttpMethods.DownloadData(endpointUrl);
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         /// <summary>
@@ -837,6 +837,18 @@ namespace CSharp_SpotifyAPI
 
             return "Playlist details changed successfully"; //return this as the api does return any data from this endpoint
         }
+
+        #endregion
+
+        #region User Profiles
+
+        public dynamic GetUserProfile(string id)
+        {
+            string endpointUrl = "users/" + id;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
 
         #endregion
     }

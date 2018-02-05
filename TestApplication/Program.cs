@@ -94,7 +94,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.ReorderPlaylistTracks("leonkouz", "1npLUC4yTNWePi0qGwbWN8", 0, 2, 3));
 
-            Console.WriteLine(api.ChangePlaylistDetails("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "new name", null, null, null));
+            //Console.WriteLine(api.ChangePlaylistDetails("leonkouz", "1npLUC4yTNWePi0qGwbWN8", "new name", null, null, null));
+
+            Console.WriteLine(api.GetUserProfile("leonkouz"));
 
             Console.ReadLine();
 
