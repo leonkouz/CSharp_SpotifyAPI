@@ -1007,6 +1007,55 @@ namespace CSharp_SpotifyAPI
             return "Tracks removed successfully"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Get a list of the albums saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersSavedAlbums()
+        {
+            string endpointUrl = "me/albums";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of the albums saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersSavedAlbums(Market market)
+        {
+            string endpointUrl = "me/albums?market=" + market;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of the albums saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="limit">The maximum number of objects to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first object to return. Default: 0 (i.e., the first object). Use with limit to get the next set of objects.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersSavedAlbums(int limit, int offset)
+        {
+            string endpointUrl = "me/albums?limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of the albums saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of objects to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first object to return. Default: 0 (i.e., the first object). Use with limit to get the next set of objects.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersSavedAlbums(Market market, int limit, int offset)
+        {
+            string endpointUrl = "me/albums?market=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
 
         #endregion

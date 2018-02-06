@@ -106,7 +106,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.SaveTracksForCurrentUser(trackids));
 
-            Console.WriteLine(api.RemoveTracksForCurrentUser(trackids));
+            //Console.WriteLine(api.RemoveTracksForCurrentUser(trackids));
+
+            Console.WriteLine(api.GetCurrentUsersSavedAlbums(Market.AD));
 
             Console.ReadLine();
 
