@@ -71,7 +71,7 @@ namespace TestApplication
 
             Console.WriteLine(api.Search("roadhouse%20OR%20blues", searchTypes, Market.AD, 20, 0));*/
 
-            //Console.WriteLine(api.GetUsersPlaylists("beanzu", 20, 0));
+            //Console.WriteLine(api.GetUsersPlaylists("name", 20, 0));
 
             //Console.WriteLine(api.GetCurrentUsersPlaylists(10, 0));
 
@@ -108,7 +108,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.RemoveTracksForCurrentUser(trackids));
 
-            Console.WriteLine(api.GetCurrentUsersSavedAlbums(Market.AD));
+            //Console.WriteLine(api.GetCurrentUsersSavedAlbums(Market.AD));
+
+            Console.WriteLine(api.CheckUsersSavedAlbums("02S1126Q5E4gUEtpTI6W38"));
 
             Console.ReadLine();
 

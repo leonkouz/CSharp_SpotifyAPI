@@ -1057,6 +1057,31 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Check if one or more albums is already saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="id">The Spotify ID for the album.</param>
+        /// <returns></returns>
+        public dynamic CheckUsersSavedAlbums(string id)
+        {
+            string endpointUrl = "me/albums/contains?ids=" + id;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Check if one or more albums is already saved in the current Spotify user’s “Your Music” library.
+        /// </summary>
+        /// <param name="ids">List of the Spotify IDs for the albums. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic CheckUsersSavedAlbums(ICollection<string> ids)
+        {
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/albums/contains?ids=" + albumIds;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
         #endregion
 
