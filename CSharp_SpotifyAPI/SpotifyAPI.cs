@@ -1148,19 +1148,60 @@ namespace CSharp_SpotifyAPI
 
         #region Personalisation
 
-        public dynamic GetCurrentUsersTopTracks(int limit, int offset, )
+        /// <summary>
+        /// Get the current user’s tracks based on calculated affinity.
+        /// </summary>
+        /// <param name="limit">The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersTopTracks(int limit, int offset)
         {
+            string endpointUrl = "me/top/tracks?limit=" + limit + "&offset=" + offset;
 
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
-        public dynamic GetCurrentUsersTopTracks(int limit, int offset,  )
+        /// <summary>
+        /// Get the current user’s tracks based on calculated affinity.
+        /// </summary>
+        /// <param name="limit">The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</param>
+        /// <param name="timeRange">Over what time frame the affinities are computed. Long term is calculated from several years of data and including all new data as it becomes available.
+        /// Medium term approximately last 6 months. Short term approximately lasts 4 weeks</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersTopTracks(int limit, int offset, TimeRange timeRange)
         {
+            string endpointUrl = "me/top/tracks?time_range=" + timeRange.GetDescription() + "&limit=" + limit + "&offset=" + offset;
 
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
-        public dynamic GetCurrentUsersTopArtists()'
+        /// <summary>
+        /// Get the current user’s top artists based on calculated affinity.
+        /// </summary>
+        /// <param name="limit">The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersTopArtists(int limit, int offset)
         {
+            string endpointUrl = "me/top/artists?limit=" + limit + "&offset=" + offset;
 
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="limit">The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</param>
+        /// <param name="timeRange">Over what time frame the affinities are computed. Long term is calculated from several years of data and including all new data as it becomes available.
+        /// Medium term approximately last 6 months. Short term approximately lasts 4 weeks</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersTopArtists(int limit, int offset, TimeRange timeRange)
+        {
+            string endpointUrl = "me/top/artists?time_range=" + timeRange.GetDescription() + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
 
         #endregion

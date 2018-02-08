@@ -112,14 +112,18 @@ namespace TestApplication
 
             //Console.WriteLine(api.CheckUsersSavedAlbums("02S1126Q5E4gUEtpTI6W38"));
 
-            List<string> albumIds = new List<string>()
+            /*List<string> albumIds = new List<string>()
             {
                 "4lVR2fg3DAUQpGVJ6DciHW", "7J0uECwRkAFLiZljgYFq1w"
-            };
+            };*/
 
             //Console.WriteLine(api.SaveAlbumsForCurrentUser(albumIds));
 
-            Console.WriteLine(api.RemoveAlbumsForCurrentUser(albumIds));
+            //Console.WriteLine(api.RemoveAlbumsForCurrentUser(albumIds));
+
+            //Console.WriteLine(api.GetCurrentUsersTopTracks(20, 0, TimeRange.LongTerm));
+
+            //Console.WriteLine(api.GetCurrentUsersTopArtists(20, 0, TimeRange.LongTerm));
 
             Console.ReadLine();
 
