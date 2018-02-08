@@ -1113,6 +1113,35 @@ namespace CSharp_SpotifyAPI
             return "Albums saved successfully"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Remove one or more albums from the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="id">The Spotify Album ID.</param>
+        /// <returns></returns>
+        public dynamic RemoveAlbumsForCurrentUser(string id)
+        {
+            string endpointUrl = "me/albums?ids=" + id;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Album removed successfully"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Remove one or more albums from the current user’s “Your Music” library.
+        /// </summary>
+        /// <param name="ids">List of Spotify Album IDs. Maximum: 50 IDs.</param>
+        /// <returns></returns>
+        public dynamic RemoveAlbumsForCurrentUser(ICollection<string> ids)
+        {
+            string albumIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/albums?ids=" + albumIds;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Albums saved successfully"; //Added as the endpoint does not return a message
+        }
 
 
         #endregion

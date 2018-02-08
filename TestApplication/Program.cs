@@ -117,7 +117,9 @@ namespace TestApplication
                 "4lVR2fg3DAUQpGVJ6DciHW", "7J0uECwRkAFLiZljgYFq1w"
             };
 
-            Console.WriteLine(api.SaveAlbumsForCurrentUser(albumIds));
+            //Console.WriteLine(api.SaveAlbumsForCurrentUser(albumIds));
+
+            Console.WriteLine(api.RemoveAlbumsForCurrentUser(albumIds));
 
             Console.ReadLine();
 
