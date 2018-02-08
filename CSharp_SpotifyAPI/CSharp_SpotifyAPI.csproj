@@ -50,6 +50,7 @@
     <Compile Include="Enums\Market.cs" />
     <Compile Include="Enums\EnumExtensions.cs" />
     <Compile Include="Enums\SearchType.cs" />
+    <Compile Include="Enums\TimeRange.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

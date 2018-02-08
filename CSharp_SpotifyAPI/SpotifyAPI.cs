@@ -1146,5 +1146,24 @@ namespace CSharp_SpotifyAPI
 
         #endregion
 
+        #region Personalisation
+
+        public dynamic GetCurrentUsersTopTracks(int limit, int offset, )
+        {
+
+        }
+
+        public dynamic GetCurrentUsersTopTracks(int limit, int offset,  )
+        {
+
+        }
+
+        public dynamic GetCurrentUsersTopArtists()'
+        {
+
+        }
+
+        #endregion
+
     }
 }
