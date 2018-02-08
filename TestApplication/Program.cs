@@ -110,10 +110,19 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetCurrentUsersSavedAlbums(Market.AD));
 
-            Console.WriteLine(api.CheckUsersSavedAlbums("02S1126Q5E4gUEtpTI6W38"));
+            //Console.WriteLine(api.CheckUsersSavedAlbums("02S1126Q5E4gUEtpTI6W38"));
+
+            List<string> albumIds = new List<string>()
+            {
+                "4lVR2fg3DAUQpGVJ6DciHW", "7J0uECwRkAFLiZljgYFq1w"
+            };
+
+            Console.WriteLine(api.SaveAlbumsForCurrentUser(albumIds));
 
             Console.ReadLine();
 
         }
     }
 }
+
+
