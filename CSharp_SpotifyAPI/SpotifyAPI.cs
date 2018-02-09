@@ -1234,8 +1234,61 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
-        
+        /// <summary>
+        /// Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items.</param>
+        /// <returns></returns>
+        public dynamic GetFeaturedPlaylists(int limit, int offset)
+        {
+            string endpointUrl = "browse/featured-playlists?limit=" + limit + "&offset=" + offset;
 
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="timeStamp">A timestamp in format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time.</param>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items.</param>
+        /// <returns></returns>
+        public dynamic GetFeaturedPlaylists(string timeStamp, int limit, int offset)
+        {
+            string endpointUrl = "browse/featured-playlists?timestamp=" + timeStamp + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items.</param>
+        /// <returns></returns>
+        public dynamic GetFeaturedPlaylists(Market market, int limit, int offset)
+        {
+            string endpointUrl = "browse/featured-playlists?country=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of Spotify featured playlists (shown, for example, on a Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="timeStamp">A timestamp in format: yyyy-MM-ddTHH:mm:ss. Use this parameter to specify the user's local time to get results tailored for that specific date and time in the day. If not provided, the response defaults to the current UTC time.</param>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items.</param>
+        /// <returns></returns>
+        public dynamic GetFeaturedPlaylists(Market market, string timeStamp, int limit, int offset)
+        {
+            string endpointUrl = "browse/featured-playlists?country=" + market + "&timestamp=" + timeStamp + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
         #endregion
 
