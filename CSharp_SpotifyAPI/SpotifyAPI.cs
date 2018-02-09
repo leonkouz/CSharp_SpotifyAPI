@@ -1290,6 +1290,62 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="limit">The maximum number of categories to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of categories.</param>
+        /// <returns></returns>
+        public dynamic GetBrowseCategories(int limit, int offset)
+        {
+            string endpointUrl = "browse/categories?limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a list of categories used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of categories to return. Default: 20. Minimum: 1. Maximum: 50.</param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of categories.</param>
+        /// <returns></returns>
+        public dynamic GetBrowseCategories(Market market, int limit, int offset)
+        {
+            string endpointUrl = "browse/categories?country=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="id">The Spotify category ID for the category.</param>
+        /// <returns></returns>
+        public dynamic GetBrowseCategories(string id)
+        {
+            string endpointUrl = "browse/categories/" + id;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get a single category used to tag items in Spotify (on, for example, the Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="id">The Spotify category ID for the category.</param>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetBrowseCategories(string id, Market market)
+        {
+            string endpointUrl = "browse/categories/" + id + "?country=" + market;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        
+
+
+
         #endregion
 
 

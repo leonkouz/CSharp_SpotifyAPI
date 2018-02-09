@@ -127,7 +127,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetListOfNewReleases(20, 0));
 
-            Console.WriteLine(api.GetFeaturedPlaylists("2018-02-01T09:01:02",  20, 0));
+            //Console.WriteLine(api.GetFeaturedPlaylists("2018-02-01T09:01:02",  20, 0));
+
+            Console.WriteLine(api.GetBrowseCategories(Market.BR, 20, 0));
 
             Console.ReadLine();
 
