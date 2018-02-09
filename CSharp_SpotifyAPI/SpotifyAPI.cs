@@ -1143,11 +1143,10 @@ namespace CSharp_SpotifyAPI
             return "Albums saved successfully"; //Added as the endpoint does not return a message
         }
 
-
         #endregion
 
         #region Personalisation
-
+        
         /// <summary>
         /// Get the current user’s tracks based on calculated affinity.
         /// </summary>
@@ -1190,7 +1189,7 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// 
+        /// Get the current user’s top artists based on calculated affinity.
         /// </summary>
         /// <param name="limit">The number of entities to return. Default: 20. Minimum: 1. Maximum: 50.</param>
         /// <param name="offset">The index of the first entity to return. Default: 0 (i.e., the first track). Use with limit to get the next set of entities.</param>
@@ -1205,6 +1204,42 @@ namespace CSharp_SpotifyAPI
         }
 
         #endregion
+
+        #region Browse
+
+        /// <summary>
+        /// Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
+        /// </summary>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items. </param>
+        /// <returns></returns>
+        public dynamic GetListOfNewReleases(int limit, int offset)
+        {
+            string endpointUrl = "browse/new-releases?limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items. </param>
+        /// <returns></returns>
+        public dynamic GetListOfNewReleases(Market market, int limit, int offset)
+        {
+            string endpointUrl = "browse/new-releases?country=" + market + "&limit=" + limit + "&offset=" + offset;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+
+
+
+        #endregion
+
+
 
     }
 }
