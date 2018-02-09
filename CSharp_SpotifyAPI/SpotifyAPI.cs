@@ -1213,7 +1213,7 @@ namespace CSharp_SpotifyAPI
         /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
         /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items. </param>
         /// <returns></returns>
-        public dynamic GetListOfNewReleases(int limit, int offset)
+        public dynamic GetNewReleases(int limit, int offset)
         {
             string endpointUrl = "browse/new-releases?limit=" + limit + "&offset=" + offset;
 
@@ -1221,20 +1221,20 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// 
+        /// Get a list of new album releases featured in Spotify (shown, for example, on a Spotify player’s “Browse” tab).
         /// </summary>
         /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
         /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
         /// <param name="offset">The index of the first item to return. Default: 0 (the first object). Use with limit to get the next set of items. </param>
         /// <returns></returns>
-        public dynamic GetListOfNewReleases(Market market, int limit, int offset)
+        public dynamic GetNewReleases(Market market, int limit, int offset)
         {
             string endpointUrl = "browse/new-releases?country=" + market + "&limit=" + limit + "&offset=" + offset;
 
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
-
+        
 
 
         #endregion
