@@ -145,11 +145,17 @@ namespace TestApplication
                 "41MozSoPIsD1dJM0CLPjZF", "6gzXCdfYfFe5XKhPKkYqxV"
             };
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
 
             //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
 
-            //Console.WriteLine(api.Follow(FollowingType.user, artistOrUserId));
+            //Console.WriteLine(api.FollowUser("beanzu"));
+
+            //Console.WriteLine(api.FollowUsers(userIds));
+
+            //Console.WriteLine(api.FollowArtist("3Nrfpe0tUJi4K4DXYWgMUX"));
+
+            //Console.WriteLine(api.FollowArtists(artistIds));
 
             //Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
 

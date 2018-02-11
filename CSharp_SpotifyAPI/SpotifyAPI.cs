@@ -1391,7 +1391,7 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="id">The artist Spotify IDs to check.</param>
         /// <returns></returns>
-        public dynamic CheckIfCurrentUserIsFollowingArtists(string id)
+        public dynamic CheckIfCurrentUserIsFollowingArtist(string id)
         {
             string endpointUrl = "me/following/contains?type=artist&ids=" + id;
 
@@ -1417,7 +1417,7 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="id">The user Spotify IDs to check.</param>
         /// <returns></returns>
-        public dynamic CheckIfCurrentUserIsFollowingUsers(string id)
+        public dynamic CheckIfCurrentUserIsFollowingUser(string id)
         {
             string endpointUrl = "me/following/contains?type=user&ids=" + id;
 
@@ -1439,36 +1439,65 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Check to see if the current user is following one or more artists or other Spotify users
+        /// Add the current user as a follower or other Spotify users.
         /// </summary>
-        /// <param name="type">The type to search for</param>
-        /// <param name="id">The artist or the user Spotify IDs to check.</param>
+        /// <param name="id">The user's Spotify ID. A maximum of 50 IDs can be sent in one request.</param>
         /// <returns></returns>
-        public dynamic FollowUserOrArtist(FollowingType type, string id)
+        public dynamic FollowUser(string id)
         {
-            string endpointUrl = "me/following?type=" + type + "&ids=" + id;
+            string endpointUrl = "me/following?type=user&ids=" + id;
 
             HttpMethods.SendPutRequest(endpointUrl);
 
-            return "Follow successfull"; //Added as the endpoint does not return a message
+            return "Followed user"; //Added as the endpoint does not return a message
         }
 
         /// <summary>
-        /// Check to see if the current user is following one or more artists or other Spotify users
+        /// Add the current user as a follower or other Spotify users.
         /// </summary>
-        /// <param name="type">The type to search for</param>
-        /// <param name="ids">List of the artist or the user Spotify IDs to check.</param>
+        /// <param name="ids">List of user's Spotify ID. A maximum of 50 IDs can be sent in one request.</param>
         /// <returns></returns>
-        public dynamic Follow(FollowingType type, ICollection<string> ids)
+        public dynamic FollowUsers(ICollection<string> ids)
         {
             string trackIds = ids.Aggregate((i, j) => i + ',' + j);
 
-            string endpointUrl = "me/following?type=" + type + "&ids=" + trackIds;
+            string endpointUrl = "me/following?type=user&ids=" + trackIds;
 
             HttpMethods.SendPutRequest(endpointUrl);
 
-            return "Follow successfull"; //Added as the endpoint does not return a message
+            return "Followed users"; //Added as the endpoint does not return a message
         }
+
+        /// <summary>
+        /// Add the current user as a follower of one or more artists.
+        /// </summary>
+        /// <param name="id">The artist's Spotify ID. A maximum of 50 IDs can be sent in one request.</param>
+        /// <returns></returns>
+        public dynamic FollowArtist(string id)
+        {
+            string endpointUrl = "me/following?type=artist&ids=" + id;
+
+            HttpMethods.SendPutRequest(endpointUrl);
+
+            return "Followed artist"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Add the current user as a follower of one or more artists.
+        /// </summary>
+        /// <param name="ids">List of artist's Spotify ID. A maximum of 50 IDs can be sent in one request.</param>
+        /// <returns></returns>
+        public dynamic FollowArtists(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/following?type=artist&ids=" + trackIds;
+
+            HttpMethods.SendPutRequest(endpointUrl);
+
+            return "Followed artists"; //Added as the endpoint does not return a message
+        }
+
 
         /// <summary>
         /// Remove the current user as a follower of one or more artists or other Spotify users.
