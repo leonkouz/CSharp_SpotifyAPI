@@ -1588,6 +1588,44 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Add the current user as a follower of a playlist.
+        /// </summary>
+        /// <param name="ownerId">The Spotify user ID of the person who owns the playlist.</param>
+        /// <param name="playlistId">The Spotify ID of the playlist. Any playlist can be followed, regardless of its public/private status, as long as you know its playlist ID.</param>
+        /// <returns></returns>
+        public dynamic FollowPlaylist(string ownerId, string playlistId)
+        {
+            string endpointUrl = "users/" + ownerId + "/playlists/" + playlistId + "/followers";
+
+            HttpMethods.SendPutRequest(endpointUrl);
+
+            return "Playlist followed"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Add the current user as a follower of a playlist.
+        /// </summary>
+        /// <param name="ownerId">The Spotify user ID of the person who owns the playlist.</param>
+        /// <param name="playlistId">The Spotify ID of the playlist. Any playlist can be followed, regardless of its public/private status, as long as you know its playlist ID.</param>
+        /// <param name="Public">Default true. If true the playlist will be included in user's public playlists, if false it will remain private. To be able to follow playlists privately, the user must have granted the playlist-modify-private scope.</param>
+        /// <returns></returns>
+        public dynamic FollowPlaylist(string ownerId, string playlistId, bool Public)
+        {
+            string endpointUrl = "users/" + ownerId + "/playlists/" + playlistId + "/followers";
+
+            JObject json =
+                new JObject(
+                    new JProperty("public", Public));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            HttpMethods.SendPutRequest(endpointUrl, jsonString);
+
+            return "Playlist followed"; //Added as the endpoint does not return a message
+        }
+
+
 
         #endregion
 

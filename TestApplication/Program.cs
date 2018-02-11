@@ -153,7 +153,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
 
-            Console.WriteLine(api.FollowUser("biggboris"));
+            //Console.WriteLine(api.FollowUser("biggboris"));
 
             //Console.WriteLine(api.FollowUsers(userIds));
 
@@ -170,6 +170,8 @@ namespace TestApplication
             //Console.WriteLine(api.UnfollowArtists(artistIds));
 
             //Console.WriteLine(api.CheckIfUsersFollowPlaylist("leonkouz", "5dbkqx1RxAiTf64YCfxocS", artistOrUserId));
+
+            //Console.WriteLine(api.FollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w", false));
 
             Console.ReadLine();
 
