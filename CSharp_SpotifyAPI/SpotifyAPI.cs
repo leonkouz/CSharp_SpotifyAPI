@@ -1642,7 +1642,17 @@ namespace CSharp_SpotifyAPI
 
         #endregion
 
+        #region Player
 
+        public dynamic GetCurrentUsersRecentlyPlayedTracks()
+        {
+            string endpointUrl = "me/player/recently-played";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+
+        #endregion
 
     }
 }
