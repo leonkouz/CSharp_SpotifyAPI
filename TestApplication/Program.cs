@@ -145,16 +145,15 @@ namespace TestApplication
                 "41MozSoPIsD1dJM0CLPjZF", "6gzXCdfYfFe5XKhPKkYqxV"
             };
 
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtist("41MozSoPIsD1dJM0CLPjZF"));
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtist("41MozSoPIsD1dJM0CLPjZF"));
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUser("tezzbian"));
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowingUser("tezzbian"));
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
-
-            //Console.WriteLine(api.FollowUser("beanzu"));
+            Console.WriteLine(api.FollowUser("biggboris"));
 
             //Console.WriteLine(api.FollowUsers(userIds));
 
@@ -162,7 +161,13 @@ namespace TestApplication
 
             //Console.WriteLine(api.FollowArtists(artistIds));
 
-            //Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
+            //Console.WriteLine(api.UnfollowUser("tezzbian"));
+
+            //Console.WriteLine(api.UnfollowUsers(userIds));
+
+            //Console.WriteLine(api.UnfollowArtist("31ID15xoalmnSgwPhHJZrR"));
+
+            //Console.WriteLine(api.UnfollowArtists(artistIds));
 
             //Console.WriteLine(api.CheckIfUsersFollowPlaylist("leonkouz", "5dbkqx1RxAiTf64YCfxocS", artistOrUserId));
 

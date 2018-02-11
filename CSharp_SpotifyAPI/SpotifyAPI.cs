@@ -1499,35 +1499,63 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
-        /// Remove the current user as a follower of one or more artists or other Spotify users.
+        /// Add the current user as a follower of one other Spotify users.
         /// </summary>
-        /// <param name="type">The type to search for</param>
-        /// <param name="id">The artist or the user Spotify IDs to check.</param>
+        /// <param name="id">The user's Spotify ID</param>
         /// <returns></returns>
-        public dynamic Unfollow(FollowingType type, string id)
+        public dynamic UnfollowUser(string id)
         {
-            string endpointUrl = "me/following?type=" + type + "&ids=" + id;
+            string endpointUrl = "me/following?type=user&ids=" + id;
 
             HttpMethods.SendDeleteRequest(endpointUrl);
 
-            return "Unfollow successfull"; //Added as the endpoint does not return a message
+            return "Unfollowed user"; //Added as the endpoint does not return a message
         }
 
         /// <summary>
-        /// Remove the current user as a follower of one or more artists or other Spotify users.
+        /// Add the current user as a follower of one or more other Spotify users.
         /// </summary>
-        /// <param name="type">The type to search for</param>
-        /// <param name="ids">List of the artist or the user Spotify IDs to check.</param>
+        /// <param name="ids">List of users Spotify ID</param>
         /// <returns></returns>
-        public dynamic Unfollow(FollowingType type, ICollection<string> ids)
+        public dynamic UnfollowUsers(ICollection<string> ids)
         {
             string trackIds = ids.Aggregate((i, j) => i + ',' + j);
 
-            string endpointUrl = "me/following?type=" + type + "&ids=" + trackIds;
+            string endpointUrl = "me/following?type=user&ids=" + trackIds;
 
             HttpMethods.SendDeleteRequest(endpointUrl);
 
-            return "Unfollow successfull"; //Added as the endpoint does not return a message
+            return "Unfollowed users"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Add the current user as a follower of one artists. 
+        /// </summary>
+        /// <param name="id">The artist's Spotify ID</param>
+        /// <returns></returns>
+        public dynamic UnfollowArtist(string id)
+        {
+            string endpointUrl = "me/following?type=artist&ids=" + id;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Unfollowed artist"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Add the current user as a follower of one or more artists.
+        /// </summary>
+        /// <param name="ids">List of artists Spotify ID</param>
+        /// <returns></returns>
+        public dynamic UnfollowArtists(ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/following?type=artist&ids=" + trackIds;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Unfollowed artists"; //Added as the endpoint does not return a message
         }
 
         /// <summary>
