@@ -1742,7 +1742,16 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
+        /// <summary>
+        /// Get information about a user’s available devices.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetUsersAvailableDevices()
+        {
+            string endpointUrl = "me/player/devices";
 
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
 
         #endregion
