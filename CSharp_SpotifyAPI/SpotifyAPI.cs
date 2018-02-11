@@ -1146,7 +1146,7 @@ namespace CSharp_SpotifyAPI
         #endregion
 
         #region Personalisation
-        
+
         /// <summary>
         /// Get the current user’s tracks based on calculated affinity.
         /// </summary>
@@ -1371,7 +1371,20 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        #endregion
 
+        #region Follow
+
+        /// <summary>
+        /// Get the current user’s followed artists.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersFollowedArtists()
+        {
+            string endpointUrl = "me/following?type=artist";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
         #endregion
 

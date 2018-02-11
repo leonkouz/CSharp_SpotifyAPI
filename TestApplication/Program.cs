@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify
+                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify, Scope.UserFollowRead
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -131,7 +131,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetBrowseCategories(Market.BR, 20, 0));
 
-            Console.WriteLine(api.GetCategoryPlaylist("dinner",Market.EC ,20, 0));
+            //Console.WriteLine(api.GetCategoryPlaylist("dinner",Market.EC ,20, 0));
+
+            Console.WriteLine(api.GetCurrentUsersFollowedArtists());
 
             Console.ReadLine();
 
