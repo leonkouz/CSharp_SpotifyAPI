@@ -1478,6 +1478,36 @@ namespace CSharp_SpotifyAPI
             return "Unfollow successfull"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// </summary>
+        /// <param name="ownerId">The Spotify user ID of the person who owns the playlist.</param>
+        /// <param name="playlistId">The Spotify ID of the playlist.</param>
+        /// <param name="userId">The ids of the users that you want to check to see if they follow the playlist.</param>
+        /// <returns></returns>
+        public dynamic CheckIfUsersFollowPlaylist(string ownerId, string playlistId, string userId)
+        {
+            string endpointUrl = "users/" + ownerId + "/playlists/" + playlistId + "/followers/contains?ids=" + userId;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Check to see if one or more Spotify users are following a specified playlist.
+        /// </summary>
+        /// <param name="ownerId">The Spotify user ID of the person who owns the playlist.</param>
+        /// <param name="playlistId">The Spotify ID of the playlist.</param>
+        /// <param name="userIds">List of Spotify User IDs; The ids of the users that you want to check to see if they follow the playlist. Maximum: 5 ids.</param>
+        /// <returns></returns>
+        public dynamic CheckIfUsersFollowPlaylist(string ownerId, string playlistId, ICollection<string> userIds)
+        {
+            string userIdsAggregated = userIds.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "users/" + ownerId + "/playlists/" + playlistId + "/followers/contains?ids=" + userIdsAggregated;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
         #endregion
 
 

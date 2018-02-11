@@ -137,14 +137,16 @@ namespace TestApplication
 
             List<string> artistOrUserId = new List<string>()
             {
-                "10gzBoINW3cLJfZUka8Zoe", "1yoZuH2j43vVSWsOwYuQyn"
+                "tezzbian", "biggboris"
             };
 
             //Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));*/
 
             //Console.WriteLine(api.Follow(FollowingType.user, artistOrUserId));
 
-            Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
+            //Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
+
+            Console.WriteLine(api.CheckIfUsersFollowPlaylist("leonkouz", "5dbkqx1RxAiTf64YCfxocS", artistOrUserId));
 
             Console.ReadLine();
 
