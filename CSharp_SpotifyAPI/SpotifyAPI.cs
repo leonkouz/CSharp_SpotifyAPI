@@ -1386,6 +1386,12 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        public dynamic CheckIfCurrentUserIsFollowing()
+        {
+
+        }
+
+
         #endregion
 
 
