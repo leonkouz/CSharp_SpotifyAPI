@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify, Scope.UserFollowRead
+                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify, Scope.UserFollowRead, Scope.UserFollowModify
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -137,10 +137,12 @@ namespace TestApplication
 
             List<string> artistOrUserId = new List<string>()
             {
-                "tezzbian", "beanzu"
+                "10gzBoINW3cLJfZUka8Zoe", "1yoZuH2j43vVSWsOwYuQyn"
             };
 
-            Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));*/
+
+            Console.WriteLine(api.Follow(FollowingType.artist, artistOrUserId));
 
             Console.ReadLine();
 
