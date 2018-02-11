@@ -173,6 +173,8 @@ namespace TestApplication
 
             //Console.WriteLine(api.FollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w", false));
 
+            Console.WriteLine(api.UnfollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w"));
+
             Console.ReadLine();
 
         }

@@ -1625,7 +1625,20 @@ namespace CSharp_SpotifyAPI
             return "Playlist followed"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Remove the current user as a follower of a playlist.
+        /// </summary>
+        /// <param name="ownerId">The Spotify user ID of the person who owns the playlist.</param>
+        /// <param name="playlistId">The Spotify ID of the playlist that is to be no longer followed.</param>
+        /// <returns></returns>
+        public dynamic UnfollowPlaylist(string ownerId, string playlistId)
+        {
+            string endpointUrl = "users/" + ownerId + "/playlists/" + playlistId + "/followers";
 
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Playlist unfollowed"; //Added as the endpoint does not return a message
+        }
 
         #endregion
 
