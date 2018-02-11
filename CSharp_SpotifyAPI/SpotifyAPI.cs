@@ -1644,9 +1644,37 @@ namespace CSharp_SpotifyAPI
 
         #region Player
 
-        public dynamic GetCurrentUsersRecentlyPlayedTracks()
+        /// <summary>
+        /// Get tracks from the current user’s recently played tracks. Returns the most recent 50 tracks played by a user. Note that a track currently playing will not be visible in play history until it has completed. 
+        /// A track must be played for more than 30 seconds to be included in play history.Any tracks listened to while the user had “Private Session” enabled in their client will not be returned in the list of recently played tracks.
+        /// The endpoint uses a bidirectional cursor for paging. Follow the next field with the before parameter to move back in time, or use the after parameter to move forward in time.
+        /// </summary>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersRecentlyPlayedTracks(int limit)
         {
             string endpointUrl = "me/player/recently-played";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get tracks from the current user’s recently played tracks. Returns the most recent 50 tracks played by a user. Note that a track currently playing will not be visible in play history until it has completed. 
+        /// A track must be played for more than 30 seconds to be included in play history.Any tracks listened to while the user had “Private Session” enabled in their client will not be returned in the list of recently played tracks.
+        /// The endpoint uses a bidirectional cursor for paging. Follow the next field with the before parameter to move back in time, or use the after parameter to move forward in time.
+        /// </summary>
+        /// <param name="limit">The maximum number of items to return. Default: 20. Minimum: 1. Maximum: 50. </param>
+        /// <param name="time">Specify a timestamp to return all items before or after. Returns all items before or after the timestamp but not including</param>
+        /// <param name="timeStamp">A Unix timestamp in milliseconds.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentUsersRecentlyPlayedTracks(int limit, Time time, string timeStamp)
+        {
+            string endpointUrl;
+
+            if(time == Time.After)
+                endpointUrl = "me/player/recently-played?after=" + timeStamp;
+            else
+                endpointUrl = "me/player/recently-played?before=" + timeStamp;
 
             return HttpMethods.SendGetRequest(endpointUrl);
         }

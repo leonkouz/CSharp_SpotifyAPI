@@ -175,7 +175,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.UnfollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w"));
 
-            Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks());
+            Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks(20, Time.Before, "1518343202525"));
 
             Console.ReadLine();
 
