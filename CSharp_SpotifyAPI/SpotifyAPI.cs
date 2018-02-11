@@ -1498,7 +1498,6 @@ namespace CSharp_SpotifyAPI
             return "Followed artists"; //Added as the endpoint does not return a message
         }
 
-
         /// <summary>
         /// Remove the current user as a follower of one or more artists or other Spotify users.
         /// </summary>

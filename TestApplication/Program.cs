@@ -145,9 +145,14 @@ namespace TestApplication
                 "41MozSoPIsD1dJM0CLPjZF", "6gzXCdfYfFe5XKhPKkYqxV"
             };
 
-            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
 
-            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtist("41MozSoPIsD1dJM0CLPjZF"));
+
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
+
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowingUser("tezzbian"));
+
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
 
             //Console.WriteLine(api.FollowUser("beanzu"));
 
