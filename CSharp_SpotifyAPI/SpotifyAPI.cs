@@ -1446,6 +1446,37 @@ namespace CSharp_SpotifyAPI
             return "Follow successfull"; //Added as the endpoint does not return a message
         }
 
+        /// <summary>
+        /// Remove the current user as a follower of one or more artists or other Spotify users.
+        /// </summary>
+        /// <param name="type">The type to search for</param>
+        /// <param name="id">The artist or the user Spotify IDs to check.</param>
+        /// <returns></returns>
+        public dynamic Unfollow(FollowingType type, string id)
+        {
+            string endpointUrl = "me/following?type=" + type + "&ids=" + id;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Unfollow successfull"; //Added as the endpoint does not return a message
+        }
+
+        /// <summary>
+        /// Remove the current user as a follower of one or more artists or other Spotify users.
+        /// </summary>
+        /// <param name="type">The type to search for</param>
+        /// <param name="ids">List of the artist or the user Spotify IDs to check.</param>
+        /// <returns></returns>
+        public dynamic Unfollow(FollowingType type, ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/following?type=" + type + "&ids=" + trackIds;
+
+            HttpMethods.SendDeleteRequest(endpointUrl);
+
+            return "Unfollow successfull"; //Added as the endpoint does not return a message
+        }
 
         #endregion
 

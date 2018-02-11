@@ -142,7 +142,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));*/
 
-            Console.WriteLine(api.Follow(FollowingType.artist, artistOrUserId));
+            //Console.WriteLine(api.Follow(FollowingType.user, artistOrUserId));
+
+            Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
 
             Console.ReadLine();
 
