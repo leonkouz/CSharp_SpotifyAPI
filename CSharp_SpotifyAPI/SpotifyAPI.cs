@@ -1702,6 +1702,49 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Transfer playback to a new device and determine if it should start playing.
+        /// </summary>
+        /// <param name="id">The ID of the device on which playback should be started/transferred.</param>
+        /// <returns></returns>
+        public dynamic TransferUsersPlayback(string id)
+        {
+            string endpointUrl = "me/player";
+
+            JObject json =
+                new JObject(
+                    new JProperty("device_ids", new JArray(id)));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
+        }
+
+        /// <summary>
+        /// Transfer playback to a new device and determine if it should start playing.
+        /// </summary>
+        /// <param name="id">The ID of the device on which playback should be started/transferred.</param>
+        /// <param name="play">True: ensure playback happens on new device. False: keep the current playback state. Note that a value of false for 
+        /// the play parameter when also transferring to another device_id will not pause playback. To ensure that playback is paused on the new device you 
+        /// should send a pause command to the currently active device before transferring to the new device_id.</param>
+        /// <returns></returns>
+        public dynamic TransferUsersPlayback(string id, bool play)
+        {
+            string endpointUrl = "me/player";
+
+            JObject json =
+                new JObject(
+                    new JProperty("device_ids", new JArray(id)),
+                    new JProperty("play", play));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
+        }
+
+
+
+
         #endregion
 
     }
