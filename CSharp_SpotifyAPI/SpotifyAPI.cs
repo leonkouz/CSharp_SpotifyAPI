@@ -1679,6 +1679,28 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Get information about the user’s current playback state, including track, track progress, and active device.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetCurrentPlaybackInformation()
+        {
+            string endpointUrl = "me/player";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get information about the user’s current playback state, including track, track progress, and active device.
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetCurrentPlaybackInformation(Market market)
+        {
+            string endpointUrl = "me/player?market=" + market;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
         #endregion
 

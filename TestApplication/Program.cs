@@ -17,7 +17,7 @@ namespace TestApplication
             string state = "123";
             List<Scope> scope = new List<Scope>()
             {
-                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify, Scope.UserFollowRead, Scope.UserFollowModify, Scope.UserReadRecentlyPlayed
+                Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserReadEmail, Scope.UserLibraryModify, Scope.UserFollowRead, Scope.UserFollowModify, Scope.UserReadRecentlyPlayed, Scope.UserReadPlaybackState
             };
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
@@ -175,7 +175,10 @@ namespace TestApplication
 
             //Console.WriteLine(api.UnfollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w"));
 
-            Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks(20, Time.Before, "1518343202525"));
+            //Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks(20, Time.Before, "1518343202525"));
+
+            Console.WriteLine(api.GetCurrentPlaybackInformation(Market.AR));
+
 
             Console.ReadLine();
 
