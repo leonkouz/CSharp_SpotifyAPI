@@ -1753,6 +1753,28 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Get the object currently being played on the user’s Spotify account.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetUsersCurrentPlayingTrack()
+        {
+            string endpointUrl = "me/player/currently-playing";
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Get the object currently being played on the user’s Spotify account.
+        /// </summary>
+        /// <param name="market">Supply this parameter to limit the response to one particular geographical market.</param>
+        /// <returns></returns>
+        public dynamic GetUsersCurrentPlayingTrack(Market market)
+        {
+            string endpointUrl = "me/player/currently-playing?market=" + market;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
 
         #endregion
 
