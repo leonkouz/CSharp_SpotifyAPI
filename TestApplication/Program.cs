@@ -135,18 +135,25 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetCurrentUsersFollowedArtists());
 
-            List<string> artistOrUserId = new List<string>()
+            List<string> userIds = new List<string>()
             {
                 "tezzbian", "biggboris"
             };
 
-            //Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));*/
+            List<string> artistIds = new List<string>()
+            {
+                "41MozSoPIsD1dJM0CLPjZF", "6gzXCdfYfFe5XKhPKkYqxV"
+            };
+
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowingArtists(artistIds));
+
+            //Console.WriteLine(api.CheckIfCurrentUserIsFollowingUsers(userIds));
 
             //Console.WriteLine(api.Follow(FollowingType.user, artistOrUserId));
 
             //Console.WriteLine(api.Unfollow(FollowingType.artist, "31ID15xoalmnSgwPhHJZrR"));
 
-            Console.WriteLine(api.CheckIfUsersFollowPlaylist("leonkouz", "5dbkqx1RxAiTf64YCfxocS", artistOrUserId));
+            //Console.WriteLine(api.CheckIfUsersFollowPlaylist("leonkouz", "5dbkqx1RxAiTf64YCfxocS", artistOrUserId));
 
             Console.ReadLine();
 
