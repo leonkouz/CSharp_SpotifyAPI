@@ -51,10 +51,10 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
-            List<string> trackids = new List<string>()
+            /*List<string> trackids = new List<string>()
              {
                  "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0", "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0"
-             };
+             };*/
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
 
@@ -133,7 +133,14 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetCategoryPlaylist("dinner",Market.EC ,20, 0));
 
-            Console.WriteLine(api.GetCurrentUsersFollowedArtists());
+            //Console.WriteLine(api.GetCurrentUsersFollowedArtists());
+
+            List<string> artistOrUserId = new List<string>()
+            {
+                "tezzbian", "beanzu"
+            };
+
+            Console.WriteLine(api.CheckIfCurrentUserIsFollowing(FollowingType.user, artistOrUserId));
 
             Console.ReadLine();
 

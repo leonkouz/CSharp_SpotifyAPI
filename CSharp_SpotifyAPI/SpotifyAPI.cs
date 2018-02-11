@@ -1386,10 +1386,34 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
-        public dynamic CheckIfCurrentUserIsFollowing()
+        /// <summary>
+        /// Check to see if the current user is following one or more artists or other Spotify users.
+        /// </summary>
+        /// <param name="type">The type to search for</param>
+        /// <param name="id">The artist or the user Spotify IDs to check.</param>
+        /// <returns></returns>
+        public dynamic CheckIfCurrentUserIsFollowing(FollowingType type, string id)
         {
+            string endpointUrl = "me/following/contains?type=" + type + "&ids=" + id;
 
+            return HttpMethods.SendGetRequest(endpointUrl);
         }
+
+        /// <summary>
+        /// Check to see if the current user is following one or more artists or other Spotify users.
+        /// </summary>
+        /// <param name="type">The type to search for</param>
+        /// <param name="ids">List of the artist or the user Spotify IDs to check.</param>
+        /// <returns></returns>
+        public dynamic CheckIfCurrentUserIsFollowing(FollowingType type, ICollection<string> ids)
+        {
+            string trackIds = ids.Aggregate((i, j) => i + ',' + j);
+
+            string endpointUrl = "me/following/contains?type=" + type + "&ids=" + trackIds;
+
+            return HttpMethods.SendGetRequest(endpointUrl);
+        }
+
 
 
         #endregion
