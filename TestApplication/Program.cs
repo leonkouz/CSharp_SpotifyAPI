@@ -51,10 +51,10 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetTrack("0hz62SbhrP77G1cajlwaEH", Market.ES));
 
-            /*List<string> trackids = new List<string>()
+             List<string> trackids = new List<string>()
              {
                  "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0", "250RLekaiL1q9qZer975Eg", "0pf9ik9MHYZnxEgDw3NYp0"
-             };*/
+             };
 
             /*Console.WriteLine(api.GetSeveralTracks(trackids, Market.ES));*/
 
@@ -185,7 +185,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.GetUsersCurrentPlayingTrack(Market.AT));
 
-            Console.WriteLine(api.Resume("bad41f473b836de526e5c1cbac1b9f63ebe283d5"));
+            //Console.WriteLine(api.Resume("bad41f473b836de526e5c1cbac1b9f63ebe283d5"));
+
+            Console.WriteLine(api.PlayTracks(trackids));
 
             Console.ReadLine();
 
