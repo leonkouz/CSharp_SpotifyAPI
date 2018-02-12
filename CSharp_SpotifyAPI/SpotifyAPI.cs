@@ -1776,6 +1776,84 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendGetRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Resume the current playback
+        /// </summary>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
+        public dynamic Resume()
+        {
+            string endpointUrl = "me/player/play";
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Resume the current playback on a specific device
+        /// </summary>
+        /// <param name="deviceId">The device id</param>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
+        public dynamic Resume(string deviceId)
+        {
+            string endpointUrl = "me/player/play?device_id=" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        public dynamic PlayTrack(string id)
+        {
+            throw new NotImplementedException();
+
+            /*JObject json =
+                new JObject(
+                    new JProperty("tracks",
+                    new JArray(
+                        new JObject(
+                            new JProperty("uri", trackUri)
+                            ))));*/
+        }
+
+        public dynamic PlayTracks(ICollection<string> ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayAlbum(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayAlbum(string id, int offset)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayPlaylist(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayPlaylist(string id, int offset)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayArtist(string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public dynamic PlayArtist(string id, int offset)
+        {
+            throw new NotImplementedException();
+        }
+
+
         #endregion
 
     }
