@@ -187,7 +187,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.Resume("bad41f473b836de526e5c1cbac1b9f63ebe283d5"));
 
-            Console.WriteLine(api.PlayTracks(trackids));
+            //Console.WriteLine(api.PlayTracks(trackids));
+
+            Console.WriteLine(api.PlayPlaylist("3XFeVxJxMmFb6zLNMddr6j", "tezzbian"));
 
             Console.ReadLine();
 

@@ -1805,7 +1805,6 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
-
         /// <summary>
         /// Play a track
         /// </summary>
@@ -1858,6 +1857,8 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
+
+
         public dynamic PlayAlbum(string id)
         {
             throw new NotImplementedException();
@@ -1868,9 +1869,19 @@ namespace CSharp_SpotifyAPI
             throw new NotImplementedException();
         }
 
-        public dynamic PlayPlaylist(string id)
+        public dynamic PlayPlaylist(string trackId, string userId)
         {
-            throw new NotImplementedException();
+            string playlistUri = "spotify:user:" + userId + ":playlist:" + trackId;
+
+            string endpointUrl = "me/player/play";
+
+            JObject json =
+                new JObject(
+                    new JProperty("context_uri", playlistUri));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
         public dynamic PlayPlaylist(string id, int offset)
