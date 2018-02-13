@@ -10,9 +10,6 @@ namespace CSharp_SpotifyAPI.Enums
     {
         Before = 0,
 
-        After = 1
+        After = 1,
     }
-    
-
-
 }
