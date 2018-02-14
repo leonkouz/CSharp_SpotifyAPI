@@ -203,7 +203,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.Seek(2500000, "13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
-            Console.WriteLine(api.SetRepeatMode(RepeatState.track));
+            //Console.WriteLine(api.SetRepeatMode(RepeatState.track));
+
+            Console.WriteLine(api.SetVolume(10, "13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
             Console.ReadLine();
 

@@ -2129,6 +2129,31 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Set the volume for the user’s current playback device.
+        /// </summary>
+        /// <param name="volumePercentage">The volume to set. Must be a value from 0 to 100 inclusive.</param>
+        /// <returns></returns>
+        public dynamic SetVolume(int volumePercentage)
+        {
+            string endpointUrl = "me/player/volume?volume_percent=" + volumePercentage;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Set the volume for the user’s current playback device.
+        /// </summary>
+        /// <param name="volumePercentage">The volume to set. Must be a value from 0 to 100 inclusive.</param>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic SetVolume(int volumePercentage, string deviceId)
+        {
+            string endpointUrl = "me/player/volume?volume_percent=" + volumePercentage + "&device_id=" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
 
         #endregion
 
