@@ -2104,6 +2104,32 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Set the repeat mode for the user’s playback.
+        /// </summary>
+        /// <param name="state">Options are repeat-track, repeat-context, and off.</param>
+        /// <returns></returns>
+        public dynamic SetRepeatMode(RepeatState state)
+        {
+            string endpointUrl = "me/player/repeat?state=" + state;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Set the repeat mode for the user’s playback. 
+        /// </summary>
+        /// <param name="state">Options are repeat-track, repeat-context, and off.</param>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic SetRepeatMode(RepeatState state, string deviceId)
+        {
+            string endpointUrl = "me/player/repeat?state=" + state + "&device_id=" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+
         #endregion
 
     }
