@@ -41,7 +41,7 @@ namespace CSharp_SpotifyAPI
             _scope = AggregateScope(scopes);
             _showDialgog = showDialog;
 
-            BuildUrl();
+            _url = BuildUrl();
         }
 
         public static string AggregateScope(ICollection<Scope> scopes)
@@ -58,7 +58,7 @@ namespace CSharp_SpotifyAPI
             return scopeContents;
         }
 
-        private void BuildUrl()
+        public string BuildUrl()
         {
             StringBuilder builder = new StringBuilder("https://accounts.spotify.com/authorize?");
             builder.Append("client_id=" + _clientID);
@@ -68,7 +68,7 @@ namespace CSharp_SpotifyAPI
             builder.Append("&state=" + _state);
             builder.Append("&show_dialog=" + _showDialgog);
 
-            _url = builder.ToString();
+            return builder.ToString();
         }
 
         public string Authenticate(bool launchBrowser)
@@ -96,10 +96,6 @@ namespace CSharp_SpotifyAPI
             if(launchBrowser == true)
             {
                 Process.Start(_url);
-            }
-            else
-            {
-                Console.WriteLine(_url);
             }
 
             //Wait for response on authorisation

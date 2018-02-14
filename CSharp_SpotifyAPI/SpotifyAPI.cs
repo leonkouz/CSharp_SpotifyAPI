@@ -13,8 +13,13 @@ namespace CSharp_SpotifyAPI
 {
     public class SpotifyAPI
     {
+
+        private Authentication auth;
+
+        #region Authentication
+
         /// <summary>
-        /// Authenticate with the Spotify API
+        /// Initalise the Spotify API
         /// </summary>
         /// <param name="clientID">The client ID provided to you by Spotify when you register your application.</param>
         /// <param name="redirectUri">The URI to redirect to after the user grants/denies permission. This URI needs to be entered in the URI whitelist that you specify when you register your application.</param>
@@ -25,12 +30,30 @@ namespace CSharp_SpotifyAPI
         /// <param name="showDialog">Whether or not to force the user to approve the app again if they’ve already done so. If false (default), a user who has already approved the application may be automatically 
         /// redirected to the URI specified by redirect_uri. If true, the user will not be automatically redirected and will have to approve the app again.</param>
         /// <param name="launchBrowser">Decide whether you would like the browser to launch directly to the webpage or if you would like to navigate to the page. If false is selected the URL is printed to the Console</param>
-        public SpotifyAPI(string clientID, string redirectUri, string state, List<Scope> scopes, bool showDialog, bool launchBrowser)
+        public SpotifyAPI(string clientID, string redirectUri, string state, List<Scope> scopes, bool showDialog)
         {
-            Authentication auth = new Authentication(clientID, redirectUri, state, scopes, showDialog);
+            auth = new Authentication(clientID, redirectUri, state, scopes, showDialog);
+        }
 
+        /// <summary>
+        /// Begin the authentication process
+        /// </summary>
+        /// <param name="launchBrowser"></param>
+        public void Authenticate(bool launchBrowser)
+        {
             Constants.AuthCode = auth.Authenticate(launchBrowser);
         }
+
+        /// <summary>
+        /// Get the URL to authenticate spotify
+        /// </summary>
+        /// <returns></returns>
+        public string GetAuthenticationUrl()
+        {
+            return auth.BuildUrl();
+        }
+
+        #endregion
 
         #region Albums
 
