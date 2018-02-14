@@ -2024,7 +2024,7 @@ namespace CSharp_SpotifyAPI
         /// <summary>
         /// Pause playback on the specified device.
         /// </summary>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
         /// <returns></returns>
         public dynamic Pause(string deviceId)
         {
@@ -2033,13 +2033,28 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Skips to next track in the user’s queue.
+        /// </summary>
+        /// <returns></returns>
         public dynamic NextSong()
         {
             string endpointUrl = "me/player/next";
 
-            return HttpMethods.SendPutRequest(endpointUrl);
+            return HttpMethods.SendPostRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Skips to next track in the user’s queue on the specified device.
+        /// </summary>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic NextSong(string deviceId)
+        {
+            string endpointUrl = "me/player/next?device_id=" + deviceId;
+
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
 
         #endregion
 

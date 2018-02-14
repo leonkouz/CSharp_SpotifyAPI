@@ -125,7 +125,7 @@ namespace CSharp_SpotifyAPI
 
                 try
                 {
-                    //string gymnastics to get error message
+                    //string gymnastics to get error message from Json
                     dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
                     string deserialisedJson = deserialisedResponse.ToString();
                     string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
