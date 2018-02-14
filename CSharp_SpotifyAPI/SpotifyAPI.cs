@@ -2056,7 +2056,28 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Skips to previous track in the user’s queue. Note that this will ALWAYS skip to the previous track, regardless of the current track’s progress. Returning to the start of the current track should be performed using the Seek method.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic PreviousTrack()
+        {
+            string endpointUrl = "me/player/previous";
 
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Skips to previous track in the user’s queue. Note that this will ALWAYS skip to the previous track, regardless of the current track’s progress. Returning to the start of the current track should be performed using the Seek method.
+        /// </summary>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic PreviousTrack(string deviceId)
+        {
+            string endpointUrl = "me/player/previous?device_id=" + deviceId;
+
+            return HttpMethods.SendPostRequest(endpointUrl);
+        }
 
         #endregion
 

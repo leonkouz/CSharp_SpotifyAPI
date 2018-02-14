@@ -197,7 +197,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.Pause("13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
-            Console.WriteLine(api.NextSong("13c53822b6a6f324e088becda0f6f052737d7d5c"));
+            //Console.WriteLine(api.NextTrack("13c53822b6a6f324e088becda0f6f052737d7d5c"));
+
+            Console.WriteLine(api.PreviousTrack("13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
             Console.ReadLine();
 
