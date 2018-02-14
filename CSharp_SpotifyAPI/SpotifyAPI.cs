@@ -1670,8 +1670,8 @@ namespace CSharp_SpotifyAPI
         public dynamic GetCurrentUsersRecentlyPlayedTracks(int limit, Time time, string timeStamp)
         {
             string endpointUrl;
-            
-            if(time == Time.After)
+
+            if (time == Time.After)
                 endpointUrl = "me/player/recently-played?after=" + timeStamp;
             else
                 endpointUrl = "me/player/recently-played?before=" + timeStamp;
@@ -1840,7 +1840,7 @@ namespace CSharp_SpotifyAPI
         {
             List<string> trackUris = new List<string>();
 
-            foreach(string str in ids)
+            foreach (string str in ids)
             {
                 string uri = "spotify:track:" + str;
                 trackUris.Add(uri);
@@ -2008,6 +2008,29 @@ namespace CSharp_SpotifyAPI
             string jsonString = StringUtil.StringifyJson(json);
 
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
+        }
+
+        /// <summary>
+        /// Pause playback on the user’s account.
+        /// </summary>
+        /// <returns></returns>
+        public dynamic Pause()
+        {
+            string endpointUrl = "me/player/pause";
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Pause playback on the specified device.
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
+        public dynamic Pause(string deviceId)
+        {
+            string endpointUrl = "me/player/pause?device_id=" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
         }
 
         #endregion
