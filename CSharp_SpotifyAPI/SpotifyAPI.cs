@@ -2033,6 +2033,14 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
+        public dynamic NextSong()
+        {
+            string endpointUrl = "me/player/next";
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+
         #endregion
 
     }

@@ -121,12 +121,22 @@ namespace CSharp_SpotifyAPI
                     errorJson = reader.ReadToEnd();
                 };
 
-                //string gymnastics to get error message
-                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
-                string deserialisedJson = deserialisedResponse.ToString();
-                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
-                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
-                string errorMessage = splitJson[1].Split('\r')[0];
+                string errorMessage = null;
+
+                try
+                {
+                    //string gymnastics to get error message
+                    dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                    string deserialisedJson = deserialisedResponse.ToString();
+                    string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                    var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
+                    errorMessage = splitJson[1].Split('\r')[0];
+                }
+                catch
+                {
+                    errorMessage = wex.Message;
+                }
+                
 
                 throw new Exception(errorMessage);
             }
