@@ -175,7 +175,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.UnfollowPlaylist("spotify", "37i9dQZF1DWVbckf5vh03w"));
 
-            //Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks(20, Time.Before, "1518343202525"));
+            Console.WriteLine(api.GetCurrentUsersRecentlyPlayedTracks(20, Time.Before, "1518343202525"));
 
             //Console.WriteLine(api.GetCurrentPlaybackInformation(Market.AR));
 
@@ -187,7 +187,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.Resume("bad41f473b836de526e5c1cbac1b9f63ebe283d5"));
 
-            Console.WriteLine(api.PlayTracks(trackids, 1));
+            //Console.WriteLine(api.PlayTracks(trackids, 1));
 
             //Console.WriteLine(api.PlayAlbum("5f8pMn2A5d5lKMDapYbCmp", 5));
 

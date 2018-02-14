@@ -12,4 +12,7 @@ namespace CSharp_SpotifyAPI.Enums
 
         After = 1,
     }
+
+
+
 }
