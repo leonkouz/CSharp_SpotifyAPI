@@ -2037,7 +2037,7 @@ namespace CSharp_SpotifyAPI
         /// Skips to next track in the user’s queue.
         /// </summary>
         /// <returns></returns>
-        public dynamic NextSong()
+        public dynamic NextTrack()
         {
             string endpointUrl = "me/player/next";
 
@@ -2049,12 +2049,14 @@ namespace CSharp_SpotifyAPI
         /// </summary>
         /// <param name="deviceId">The id of the device this command is targeting.</param>
         /// <returns></returns>
-        public dynamic NextSong(string deviceId)
+        public dynamic NextTrack(string deviceId)
         {
             string endpointUrl = "me/player/next?device_id=" + deviceId;
 
             return HttpMethods.SendPostRequest(endpointUrl);
         }
+
+
 
         #endregion
 
