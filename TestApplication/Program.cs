@@ -191,7 +191,9 @@ namespace TestApplication
 
             //Console.WriteLine(api.PlayAlbum("5f8pMn2A5d5lKMDapYbCmp", 5));
 
-            Console.WriteLine(api.PlayPlaylist("5LXyV8imf7zQ5eCXI5CQ8s", "tezzbian", 5));
+            //Console.WriteLine(api.PlayPlaylist("5LXyV8imf7zQ5eCXI5CQ8s", "tezzbian", 5));
+
+            Console.WriteLine(api.PlayArtist("7ohlPA8dRBtCf92zaZCaaB"));
 
             Console.ReadLine();
 

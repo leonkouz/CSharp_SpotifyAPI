@@ -1955,16 +1955,29 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
+        /// <summary>
+        /// Start playback of an artists songs
+        /// </summary>
+        /// <param name="id">The Spotify Artist ID</param>
+        /// <returns></returns>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
         public dynamic PlayArtist(string id)
         {
-            throw new NotImplementedException();
-        }
+            string artistUri = "spotify:artist:" + id;
 
-        public dynamic PlayArtist(string id, int offset)
-        {
-            throw new NotImplementedException();
-        }
+            string endpointUrl = "me/player/play";
 
+            JObject json =
+                new JObject(
+                    new JProperty("context_uri", artistUri));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
+        }
 
         #endregion
 
