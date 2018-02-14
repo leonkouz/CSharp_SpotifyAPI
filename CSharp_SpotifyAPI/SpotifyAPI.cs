@@ -1858,6 +1858,37 @@ namespace CSharp_SpotifyAPI
         }
 
         /// <summary>
+        /// Play one or more tracks. If more than one track is specified, the remaining tracks will be queued.
+        /// </summary>
+        /// <param name="ids">List of Spotify Track IDs</param>
+        /// <param name="offset">Indicates where in the album playback should start. Cannot be negative.</param>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
+        public dynamic PlayTracks(ICollection<string> ids, int offset)
+        {
+            List<string> trackUris = new List<string>();
+
+            foreach (string str in ids)
+            {
+                string uri = "spotify:track:" + str;
+                trackUris.Add(uri);
+            }
+
+            string endpointUrl = "me/player/play";
+
+            JObject json =
+                new JObject(
+                    new JProperty("uris", new JArray(trackUris)),
+                    new JProperty("offset", new JObject(new JProperty("position", offset))));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
+        }
+
+        /// <summary>
         /// Start playback of an album
         /// </summary>
         /// <param name="id">The Spotify Album ID</param>
