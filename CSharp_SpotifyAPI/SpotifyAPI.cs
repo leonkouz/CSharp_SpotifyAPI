@@ -1905,14 +1905,54 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
-        public dynamic PlayPlaylist(string id)
+        /// <summary>
+        /// Start playback of a playlist
+        /// </summary>
+        /// <param name="playlistId">The Spotify Playlist ID</param>
+        /// <param name="userId">The Spotify User ID that the playlist belongs to</param>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
+        public dynamic PlayPlaylist(string playlistId, string userId)
         {
-            throw new NotImplementedException();
+            string playlistUri = "spotify:user:" + userId + ":playlist:" + playlistId;
+
+            string endpointUrl = "me/player/play";
+
+            JObject json =
+                new JObject(
+                    new JProperty("context_uri", playlistUri));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
-        public dynamic PlayPlaylist(string id, int offset)
+        /// <summary>
+        /// Start playback of a playlist at specific position
+        /// </summary>
+        /// <param name="playlistId">The Spotify Playlist ID</param>
+        /// <param name="userId">The Spotify User ID that the playlist belongs to</param>
+        /// <param name="offset">Indicates where in the album playback should start. Cannot be negative.</param>
+        /// <returns>A successful request will return a 204 NO CONTENT response code.
+        /// When the device is temporarily unavailable the request will return a 202 ACCEPTED response code and the client should retry the request after 5 seconds, but no more than at most 5 retries.
+        /// If the device is not found, the request will return 404 NOT FOUND response code.
+        /// If the user making the request is non-premium, a 403 FORBIDDEN response code will be returned.</returns>
+        public dynamic PlayPlaylist(string playlistId, string userId, int offset)
         {
-            throw new NotImplementedException();
+            string playlistUri = "spotify:user:" + userId + ":playlist:" + playlistId;
+
+            string endpointUrl = "me/player/play";
+
+            JObject json =
+                new JObject(
+                    new JProperty("context_uri", playlistUri),
+                    new JProperty("offset", new JObject(new JProperty("position", offset))));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            return HttpMethods.SendPutRequest(endpointUrl, jsonString);
         }
 
         public dynamic PlayArtist(string id)
