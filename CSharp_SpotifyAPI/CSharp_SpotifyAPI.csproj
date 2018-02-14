@@ -49,6 +49,7 @@
     <Compile Include="Enums\AlbumType.cs" />
     <Compile Include="Enums\Market.cs" />
     <Compile Include="Enums\EnumExtensions.cs" />
+    <Compile Include="Enums\RepeatState.cs" />
     <Compile Include="Enums\SearchType.cs" />
     <Compile Include="Enums\Time.cs" />
     <Compile Include="Enums\TimeRange.cs" />
