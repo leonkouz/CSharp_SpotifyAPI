@@ -2079,6 +2079,31 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPostRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Seeks to the given position in the user’s currently playing track.
+        /// </summary>
+        /// <param name="milliseconds">The position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.</param>
+        /// <returns></returns>
+        public dynamic Seek(int milliseconds)
+        {
+            string endpointUrl = "me/player/seek?position_ms=" + milliseconds;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Seeks to the given position in the user’s currently playing track.
+        /// </summary>
+        /// <param name="milliseconds">The position in milliseconds to seek to. Must be a positive number. Passing in a position that is greater than the length of the track will cause the player to start playing the next song.</param>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic Seek(int milliseconds, string deviceId)
+        {
+            string endpointUrl = "me/player/seek?position_ms=" + milliseconds + "&device_id=" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
         #endregion
 
     }
