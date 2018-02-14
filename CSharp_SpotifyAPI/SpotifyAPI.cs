@@ -2154,6 +2154,30 @@ namespace CSharp_SpotifyAPI
             return HttpMethods.SendPutRequest(endpointUrl);
         }
 
+        /// <summary>
+        /// Toggle shuffle on or off for user’s playback.
+        /// </summary>
+        /// <param name="state">true: shuffle user's playback. false: do not shuffle user's playback</param>
+        /// <returns></returns>
+        public dynamic SetShuffleStatus(bool state)
+        {
+            string endpointUrl = "me/player/shuffle?state=" + state;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
+
+        /// <summary>
+        /// Toggle shuffle on or off for user’s playback.
+        /// </summary>
+        /// <param name="state">true: shuffle user's playback. false: do not shuffle user's playback</param>
+        /// <param name="deviceId">The id of the device this command is targeting.</param>
+        /// <returns></returns>
+        public dynamic SetShuffleStatus(bool state, string deviceId)
+        {
+            string endpointUrl = "me/player/shuffle?state=" + state + "&device_id" + deviceId;
+
+            return HttpMethods.SendPutRequest(endpointUrl);
+        }
 
         #endregion
 
