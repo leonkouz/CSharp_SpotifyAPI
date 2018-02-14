@@ -71,7 +71,7 @@ namespace CSharp_SpotifyAPI
             _url = builder.ToString();
         }
 
-        public string Authenticate()
+        public string Authenticate(bool launchBrowser)
         {
             //Manual Reset event is used to wait for a response from HTTP Server to allow thread to continue
             ManualResetEvent mre = new ManualResetEvent(false);
@@ -93,8 +93,15 @@ namespace CSharp_SpotifyAPI
                 };
             });
 
-            Process.Start(_url);
-            
+            if(launchBrowser == true)
+            {
+                Process.Start(_url);
+            }
+            else
+            {
+                Console.WriteLine(_url);
+            }
+
             //Wait for response on authorisation
             mre.WaitOne();
 

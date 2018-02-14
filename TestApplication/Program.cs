@@ -20,7 +20,7 @@ namespace TestApplication
                 Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserModifyPlaybackState, Scope.UserModifyPlaybackState, Scope.UserFollowRead, Scope.UserFollowModify, Scope.UserReadRecentlyPlayed, Scope.UserReadPlaybackState
             };
 
-            SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
+            SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true, false);
 
             /*
             string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
