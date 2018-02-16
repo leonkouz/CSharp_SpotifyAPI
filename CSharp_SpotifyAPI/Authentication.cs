@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CSharp_SpotifyAPI.Enums;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace CSharp_SpotifyAPI
 {
@@ -14,13 +16,14 @@ namespace CSharp_SpotifyAPI
         //https://developer.spotify.com/web-api/authorization-guide/#implicit_grant_flow
 
         private string _clientID;
+        private string _clientSecret;
         private string _responseType = "token"; //always set to "token"
         private string _redirectUri;
         private string _state;
         private string _scope;
         private bool _showDialgog;
         private string _url;
-
+        
         /// <summary>
         /// Authenticate with the Spotify API
         /// </summary>
@@ -32,10 +35,10 @@ namespace CSharp_SpotifyAPI
         /// <param name="scope">A space-separated list of scopes</param>
         /// <param name="showDialog">Whether or not to force the user to approve the app again if they’ve already done so. If false (default), a user who has already approved the application may be automatically 
         /// redirected to the URI specified by redirect_uri. If true, the user will not be automatically redirected and will have to approve the app again.</param>
-        public Authentication(string clientID, string redirectUri, string state, ICollection<Scope> scopes, bool showDialog)
+        public Authentication(string clientID, string clientSecret, string redirectUri, string state, ICollection<Scope> scopes, bool showDialog)
         {
-            // Updated to accept any number of scopes that are specified before running - Lock   
             _clientID = clientID;
+            _clientSecret = clientSecret;
             _redirectUri = redirectUri;
             _state = state;
             _scope = AggregateScope(scopes);
@@ -102,6 +105,29 @@ namespace CSharp_SpotifyAPI
             mre.WaitOne();
 
             return authCode;
+        }
+
+
+        /// <summary>
+        /// Used to request refresh and access tokens for Authorisation Code Flow
+        /// </summary>
+        /// <returns></returns>
+        public AuthorisationCodeToken RequestAccessTokens()
+        {
+            string endpointUrl = "https://accounts.spotify.com/api/token";
+
+            JObject json = new JObject(
+                new JProperty("grant_type", "authorization_code"),
+                new JProperty("code", Constants.AuthCode),
+                new JProperty("redirect_uri", _redirectUri),
+                new JProperty("client_id", _clientID),
+                new JProperty("client_secret", _clientSecret));
+
+            string jsonString = StringUtil.StringifyJson(json);
+
+            AuthorisationCodeToken token = JsonConvert.DeserializeObject<AuthorisationCodeToken>(HttpMethods.SendPostRequest(endpointUrl, jsonString, false));
+
+            return token;
         }
     }
 }

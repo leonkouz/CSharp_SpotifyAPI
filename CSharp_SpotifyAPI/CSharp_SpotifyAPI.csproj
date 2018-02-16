@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Authentication.cs" />
+    <Compile Include="AuthorisationCodeToken.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Enums\AlbumType.cs" />
     <Compile Include="Enums\AuthorisationType.cs" />

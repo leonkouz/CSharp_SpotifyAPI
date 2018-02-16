@@ -75,12 +75,21 @@ namespace CSharp_SpotifyAPI
                     errorJson = reader.ReadToEnd();
                 };
 
-                //string gymnastics to get error message
-                dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
-                string deserialisedJson = deserialisedResponse.ToString();
-                string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
-                var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
-                string errorMessage = splitJson[1].Split('\r')[0];
+                string errorMessage = null;
+
+                try
+                {
+                    //string gymnastics to get error message from Json
+                    dynamic deserialisedResponse = JsonConvert.DeserializeObject(errorJson);
+                    string deserialisedJson = deserialisedResponse.ToString();
+                    string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
+                    var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
+                    errorMessage = splitJson[1].Split('\r')[0];
+                }
+                catch
+                {
+                    errorMessage = wex.Message;
+                }
 
                 throw new Exception(errorMessage);
             }
@@ -181,6 +190,19 @@ namespace CSharp_SpotifyAPI
             string url = Constants.baseUrl + endpointUrl;
 
             var json = HttpMethodWithAuthHeader(url, Constants.AuthCode, HttpMethod.POST);
+
+            return json;
+        }
+
+        /// <summary>
+        /// Sends a POST request to the specified URL with a body
+        /// </summary>
+        /// <param name="endpointUrl">The Spotify API endpoint url</param>
+        /// <param name="jsonData">The body of the POST request</param>
+        /// <returns></returns>
+        public static dynamic SendPostRequest(string endpointUrl, string jsonData, bool nothing)
+        {
+            var json = HttpMethodWithAuthHeader(endpointUrl, Constants.AuthCode, HttpMethod.POST, jsonData);
 
             return json;
         }

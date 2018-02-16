@@ -16,6 +16,7 @@ namespace TestApplication
         {
 
             string clientID = "305dbadf23cd4d9688868eb01857b54b";
+            string clientSecret = "8634ac5e0a9a47f4ae434af0cf684fee";
             string redirectID = "http%3A%2F%2Flocalhost%3A62177";
             string state = "123";
             List<Scope> scope = new List<Scope>()
@@ -23,19 +24,11 @@ namespace TestApplication
                 Scope.UserReadPrivate, Scope.UserReadBirthdate, Scope.UserModifyPlaybackState, Scope.UserModifyPlaybackState, Scope.UserFollowRead, Scope.UserFollowModify, Scope.UserReadRecentlyPlayed, Scope.UserReadPlaybackState
             };
 
-            SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
+            SpotifyAPI api = new SpotifyAPI(clientID, clientSecret, redirectID, state, scope, true);
 
             api.Authenticated += Api_Authenticated;
 
-            Task.Run(() =>
-            {
-                api.Authenticate(true);
-            });
-            
-            while(authenticated == false)
-            {
-                
-            }
+            api.Authenticate(true);
 
             /*
             string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
