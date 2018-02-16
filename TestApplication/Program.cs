@@ -22,6 +22,8 @@ namespace TestApplication
 
             SpotifyAPI api = new SpotifyAPI(clientID, redirectID, state, scope, true);
 
+            api.Authenticated += Api_Authenticated;
+
             api.Authenticate(true);
 
             /*
@@ -183,7 +185,7 @@ namespace TestApplication
 
             //Console.WriteLine(api.TransferUsersPlayback("bad41f473b836de526e5c1cbac1b9f63ebe283d5", true));
 
-            //Console.WriteLine(api.GetUsersAvailableDevices());
+            Console.WriteLine(api.GetUsersAvailableDevices());
 
             //Console.WriteLine(api.GetUsersCurrentPlayingTrack(Market.AT));
 
@@ -209,10 +211,15 @@ namespace TestApplication
 
             //Console.WriteLine(api.SetVolume(10, "13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
-            Console.WriteLine(api.SetShuffleStatus(false, "13c53822b6a6f324e088becda0f6f052737d7d5c"));
+            //Console.WriteLine(api.SetShuffleStatus(false, "13c53822b6a6f324e088becda0f6f052737d7d5c"));
 
             Console.ReadLine();
 
+        }
+
+        private static void Api_Authenticated(object sender, EventArgs e)
+        {
+            //Do something
         }
     }
 }

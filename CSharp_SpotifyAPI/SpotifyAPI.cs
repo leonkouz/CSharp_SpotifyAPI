@@ -13,8 +13,9 @@ namespace CSharp_SpotifyAPI
 {
     public class SpotifyAPI
     {
-
         private Authentication auth;
+
+        public event EventHandler Authenticated;
 
         #region Authentication
 
@@ -42,6 +43,13 @@ namespace CSharp_SpotifyAPI
         public void Authenticate(bool launchBrowser)
         {
             Constants.AuthCode = auth.Authenticate(launchBrowser);
+
+            OnAuthentication(EventArgs.Empty);
+        }
+
+        protected void OnAuthentication(EventArgs e)
+        {
+            Authenticated?.Invoke(this, e);
         }
 
         /// <summary>
