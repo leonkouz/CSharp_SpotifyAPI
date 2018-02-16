@@ -10,8 +10,11 @@ namespace TestApplication
 {
     class Program
     {
+        public static bool authenticated = false;
+
         static void Main(string[] args)
         {
+
             string clientID = "305dbadf23cd4d9688868eb01857b54b";
             string redirectID = "http%3A%2F%2Flocalhost%3A62177";
             string state = "123";
@@ -24,7 +27,15 @@ namespace TestApplication
 
             api.Authenticated += Api_Authenticated;
 
-            api.Authenticate(true);
+            Task.Run(() =>
+            {
+                api.Authenticate(true);
+            });
+            
+            while(authenticated == false)
+            {
+                
+            }
 
             /*
             string[] albumIds = new string[2] {"1FpEcjbwwsSKIeCBzNKZdc", "2YDNDwQvsU0njt7Kq0xNRY"};
@@ -220,6 +231,7 @@ namespace TestApplication
         private static void Api_Authenticated(object sender, EventArgs e)
         {
             //Do something
+            authenticated = true;
         }
     }
 }
