@@ -131,6 +131,7 @@ namespace CSharp_SpotifyAPI
                     string charRemoved = StringUtil.RemoveAllInstanceOfCharacter('"', deserialisedJson);
                     var splitJson = charRemoved.Split(new string[] { "message:" }, StringSplitOptions.None);
                     errorMessage = splitJson[1].Split('\r')[0];
+                    errorMessage.Trim(' ');
                 }
                 catch
                 {
@@ -138,7 +139,7 @@ namespace CSharp_SpotifyAPI
                 }
                 
 
-                throw new Exception(errorMessage);
+                throw new ArgumentException(errorMessage);
             }
         }
 

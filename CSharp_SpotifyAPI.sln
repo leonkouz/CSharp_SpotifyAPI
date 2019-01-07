@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp_SpotifyAPI", "CSharp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{EBCB57AD-8418-43E3-A32A-B2B9D68F0E40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp_SpotifyAPITests", "CSharp_SpotifyAPITests\CSharp_SpotifyAPITests.csproj", "{D2E54F16-0B64-4508-B157-55AB7651136A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EBCB57AD-8418-43E3-A32A-B2B9D68F0E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCB57AD-8418-43E3-A32A-B2B9D68F0E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBCB57AD-8418-43E3-A32A-B2B9D68F0E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2E54F16-0B64-4508-B157-55AB7651136A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2E54F16-0B64-4508-B157-55AB7651136A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2E54F16-0B64-4508-B157-55AB7651136A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2E54F16-0B64-4508-B157-55AB7651136A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

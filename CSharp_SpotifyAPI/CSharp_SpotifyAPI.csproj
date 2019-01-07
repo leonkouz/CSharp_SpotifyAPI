@@ -54,6 +54,17 @@
     <Compile Include="Enums\SearchType.cs" />
     <Compile Include="Enums\Time.cs" />
     <Compile Include="Enums\TimeRange.cs" />
+    <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\AlbumTrackPagingObject.cs" />
+    <Compile Include="Models\AlbumTracks.cs" />
+    <Compile Include="Models\AlbumTrack.cs" />
+    <Compile Include="Models\Albums.cs" />
+    <Compile Include="Models\Followers.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ExternalIds.cs" />
+    <Compile Include="Models\Copyright.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\ExternalUrls.cs" />
     <Compile Include="Utility\HttpMethods.cs" />
     <Compile Include="HTTPServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
